@@ -60,6 +60,9 @@ exclude_patterns = []
 #
 html_theme = 'sphinx_rtd_theme'
 
+# GitHub Pages 友好设置
+html_baseurl = ''  # 可根据需要填写你的 GitHub Pages 地址
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
