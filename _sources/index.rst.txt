@@ -1,15 +1,21 @@
-欢迎来到 Titan_SDK_Docs 文档
-=============================
+.. BLUETOOTHLOVER_wiki documentation master file, created by
+   sphinx-quickstart on Sat Sep 26 09:04:08 2020.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to BLUETOOTHLOVER_wiki's documentation!
+=============================================
 
 .. toctree::
    :maxdepth: 2
-   :caption: 目录
+   :caption: BLE knowledge:
+   :glob:
 
-   getting_started
-   usage
-   api
-   faq
+   1/index
 
-项目简介
---------
-这里是项目的简要介绍。 
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
