@@ -1,0 +1,63 @@
+name: Release the result
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  # Runs at 16:00 UTC (BeiJing 00:00) on the 1st of every month
+  schedule:
+    - cron:  '0 16 1 * *'
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+  
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    name: release html
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: 3.8
+
+      - name: Install Tools
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo python -m pip install --upgrade pip -qq
+          sudo apt-get install zip
+          pip install sphinx
+          pip install sphinx-autobuild
+          pip install sphinx_rtd_theme
+          pip install recommonmark
+          pip install sphinx_markdown_tables
+          pip install requests -qq
+      - name: build Compile
+        shell: bash
+        run: |
+          make html
+          ls -la build/
+      - name: Upload static files as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@main
+        with:
+          path: build/html/
+  # Deployment job
+  deploy:
+    if: github.event_name == 'push'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

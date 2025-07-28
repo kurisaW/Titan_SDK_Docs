@@ -1,0 +1,4 @@
+# Add 'Supperthomas' label to any changes within 'docs' folder or any subfolders
+Supperthomas:
+- changed-files:
+  - any-glob-to-any-file: source/**

@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Titan_sdk_Docs'
+project = 'Titan_SDK_Docs'
 copyright = '2025, apache'
 author = 'kurisaw'
 
@@ -60,9 +60,6 @@ exclude_patterns = []
 #
 html_theme = 'sphinx_rtd_theme'
 
-# GitHub Pages 友好设置
-html_baseurl = 'https://kurisaw.github.io/Titan_SDK_Docs'
-
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
@@ -82,3 +79,5 @@ def setup(app):
     app.add_transform(AutoStructify)
 
 # At the bottom of conf.py
+
+
