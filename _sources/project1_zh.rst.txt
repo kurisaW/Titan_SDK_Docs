@@ -1,5 +1,5 @@
 Project1 (中文版)
-================
+=================
 
-.. include:: ../../docs/project1/README.md
+.. include:: docs/project1/README.md
    :parser: markdown 

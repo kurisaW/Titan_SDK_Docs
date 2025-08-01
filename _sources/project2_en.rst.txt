@@ -1,5 +1,5 @@
 Project2 (English Version)
-=========================
+==========================
 
-.. include:: ../../docs/project2/README_en.md
+.. include:: docs/project2/README_en.md
    :parser: markdown 
