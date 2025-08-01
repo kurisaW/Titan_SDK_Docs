@@ -12,6 +12,7 @@
    api/index
    faq/index
    guide/index
+   docs_index
 
 项目简介
 --------
