@@ -1,5 +1,0 @@
-Project2 (中文版)
-=================
-
-.. include:: docs/project2/README.md
-   :parser: markdown 

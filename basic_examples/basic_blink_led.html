@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basic Blink Led &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Basic Buzzer" href="basic_buzzer.html" />
+    <link rel="prev" title="Basic Key Irq" href="basic_key_irq.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">快速开始</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">基础功能示例</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="basic_key_irq.html">Basic Key Irq</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Basic Blink Led</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hello-rt-thread">Hello RT-Thread!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#this-example-project-is-an-rgb-flicker-routine">This example project is an RGB flicker routine!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="basic_buzzer.html">Basic Buzzer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../driver_examples/index.html">驱动示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../component_examples/index.html">组件示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/index.html">使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API 文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/index.html">开发指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">基础功能示例</a></li>
+      <li class="breadcrumb-item active">Basic Blink Led</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/basic_examples/basic_blink_led.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="basic-blink-led">
+<h1>Basic Blink Led<a class="headerlink" href="#basic-blink-led" title="Link to this heading"></a></h1>
+<p><strong>中文</strong> | <a class="reference external" href="{project_name}_en">English</a></p>
+<p># RA8P1 Titan Board 开发板 RGB 使用说明
+RA8P1 Titan Board 开发板 RGB 使用说明
+==</p>
+<p><strong>中文**|`**English</strong> &lt;README_EN.md&gt;`_</p>
+<p>## 简介
+简介
+--</p>
+<p>本例程作为SDK 的第一个例程，也是最简单的例程，类似于程序员接触的第一个程序 Hello World 一样简洁。它的主要功能是让板载的 RGB-LED 进行周期性闪烁。</p>
+<p>## 硬件说明
+硬件说明
+--</p>
+<img alt="image-20250730133227218" src="basic_examples/figures/image-20250730133227218.png" />
+<img alt="image-20250730133257521" src="basic_examples/figures/image-20250730133257521.png" />
+<p>如上图所示，Titan Board 提供三个用户LED，分别为LED_R（RED）、LED_B（BLUE）、LED_G（GREEN），其中 LED_B 对应引脚P012。单片机引脚输出低电平即可点亮LED ，输出高电平则会熄灭LED。</p>
+<p>LED在开发板中的位置如下图所示：</p>
+<img alt="image-20250730133504282" src="basic_examples/figures/image-20250730133504282.png" />
+<p>## 软件说明
+软件说明
+--</p>
+<p>本例程的源码位于:code:<cite>/projects/Titan_basic_blink_led</cite>。RGB-LED 对应的单片机引脚定义及 RGB 变换源码可以通过查阅 :code:<a href="#id1"><span class="problematic" id="id2">`</span></a>src/hal_entry.c`中。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<p>/* 配置 LED 灯引脚 <a href="#id3"><span class="problematic" id="id4">*</span></a>/
+#define LED_PIN_R   BSP_IO_PORT_00_PIN_13
+#define LED_PIN_B   BSP_IO_PORT_00_PIN_12
+#define LED_PIN_G   BSP_IO_PORT_06_PIN_13</p>
+<p>/* 定义 LED 亮灭电平 <a href="#id5"><span class="problematic" id="id6">*</span></a>/
+#define LED_ON  (0)
+#define LED_OFF (1)</p>
+<p>/* 定义 8 组 LED 闪灯表，其顺序为 R B G <a href="#id7"><span class="problematic" id="id8">*</span></a>/
+static const rt_uint8_t _blink_tab[][3] =
+{</p>
+<blockquote>
+<div><p>{LED_OFF, LED_OFF, LED_OFF},
+{LED_ON,  LED_OFF, LED_OFF},
+{LED_OFF, LED_ON,  LED_OFF},
+{LED_OFF, LED_OFF, LED_ON},
+{LED_ON,  LED_OFF, LED_ON},
+{LED_ON,  LED_ON,  LED_OFF},
+{LED_OFF, LED_ON,  LED_ON},
+{LED_ON,  LED_ON,  LED_ON},</p>
+</div></blockquote>
+<p>};</p>
+<p>void hal_entry(void)
+{</p>
+<blockquote>
+<div><p>rt_kprintf(&quot;nHello RT-Thread!n&quot;);
+rt_kprintf(&quot;==================================================n&quot;);
+rt_kprintf(&quot;This example project is a RGB flicker routine!nn&quot;);
+rt_kprintf(&quot;==================================================n&quot;);</p>
+<p>unsigned int count = 0;
+unsigned int group_num = sizeof(_blink_tab)/sizeof(_blink_tab[0]);
+unsigned int group_current;</p>
+<p>/* 设置 RGB 灯引脚为输出模式 <a href="#id9"><span class="problematic" id="id10">*</span></a>/
+rt_pin_mode(LED_PIN_R, PIN_MODE_OUTPUT);
+rt_pin_mode(LED_PIN_G, PIN_MODE_OUTPUT);
+rt_pin_mode(LED_PIN_B, PIN_MODE_OUTPUT);
+rt_pin_write(LED_PIN_R, LED_OFF);
+rt_pin_write(LED_PIN_G, LED_OFF);
+rt_pin_write(LED_PIN_B, LED_OFF);</p>
+<p>do
+{</p>
+<blockquote>
+<div><p>/* 获得组编号 <a href="#id11"><span class="problematic" id="id12">*</span></a>/
+group_current = count % group_num;</p>
+<p>/* 控制 RGB 灯 <a href="#id13"><span class="problematic" id="id14">*</span></a>/
+rt_pin_write(LED_PIN_R, _blink_tab[group_current][0]);
+rt_pin_write(LED_PIN_B, _blink_tab[group_current][1]);
+rt_pin_write(LED_PIN_G, _blink_tab[group_current][2]);</p>
+<p>/* 输出 LOG 信息 <a href="#id15"><span class="problematic" id="id16">*</span></a>/
+LOG_D(&quot;group: %d | red led [%-3.3s] | | blue led [%-3.3s] | | green led [%-3.3s]&quot;,</p>
+<blockquote>
+<div><p>group_current,
+_blink_tab[group_current][0] == LED_ON ? &quot;ON&quot; : &quot;OFF&quot;,
+_blink_tab[group_current][1] == LED_ON ? &quot;ON&quot; : &quot;OFF&quot;,
+_blink_tab[group_current][2] == LED_ON ? &quot;ON&quot; : &quot;OFF&quot;);</p>
+</div></blockquote>
+<p>count++;</p>
+<p>/* 延时一段时间 <a href="#id17"><span class="problematic" id="id18">*</span></a>/
+rt_thread_mdelay(500);</p>
+</div></blockquote>
+<p>}while(count &gt; 0);</p>
+</div></blockquote>
+<p>}</p>
+<p>## 编译&amp;下载
+编译&amp;下载
+--</p>
+<ul class="simple">
+<li><p>RT-Thread Studio：在 RT-Thread Studio 的包管理器中下载 Titan Board 资源包，然后创建新工程，执行编译。</p></li>
+</ul>
+<p>编译完成后，将开发板的 Jlink 接口与 PC 机连接，然后将固件下载至开发板。</p>
+<p>## 运行效果
+运行效果
+--</p>
+<p>按下复位按键重启开发板，观察开发板上 RBG-LED 的实际效果。正常运行后，RGB 会周期性变化。</p>
+<p>此时也可以在 PC 端使用终端工具打开开发板的默认配置的串口，设置波特率为115200N。开发板的运行日志信息即可实时输出出来。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="err">\</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="o">/</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>RT -     Thread Operating System</p></li>
+</ul>
+<blockquote>
+<div><p>/ |     5.2.0 build Jul 30 2025 13:29:07
+2006 - 2024 Copyright by RT-Thread team</p>
+</div></blockquote>
+</section>
+<section id="hello-rt-thread">
+<h1>Hello RT-Thread!<a class="headerlink" href="#hello-rt-thread" title="Link to this heading"></a></h1>
+</section>
+<section id="this-example-project-is-an-rgb-flicker-routine">
+<h1>This example project is an RGB flicker routine!<a class="headerlink" href="#this-example-project-is-an-rgb-flicker-routine" title="Link to this heading"></a></h1>
+<p>[D/main] group: 0 | red led [OFF] | | blue led [OFF] | | green led [OFF]
+[D/main] group: 1 | red led [ON ] | | blue led [OFF] | | green led [OFF]
+[D/main] group: 2 | red led [OFF] | | blue led [ON ] | | green led [OFF]
+[D/main] group: 3 | red led [OFF] | | blue led [OFF] | | green led [ON ]
+[D/main] group: 4 | red led [ON ] | | blue led [OFF] | | green led [ON ]
+[D/main] group: 5 | red led [ON ] | | blue led [ON ] | | green led [OFF]
+[D/main] group: 6 | red led [OFF] | | blue led [ON ] | | green led [ON ]
+[D/main] group: 7 | red led [ON ] | | blue led [ON ] | | green led [ON ]</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="basic_key_irq.html" class="btn btn-neutral float-left" title="Basic Key Irq" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="basic_buzzer.html" class="btn btn-neutral float-right" title="Basic Buzzer" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

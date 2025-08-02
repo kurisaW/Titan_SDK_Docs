@@ -1,0 +1,313 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Component Flash Fs &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="使用说明" href="../usage/index.html" />
+    <link rel="prev" title="组件示例" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../driver_examples/index.html">驱动示例</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">组件示例</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Component Flash Fs</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/index.html">使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API 文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/index.html">开发指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">组件示例</a></li>
+      <li class="breadcrumb-item active">Component Flash Fs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/component_examples/component_flash_fs.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="component-flash-fs">
+<h1>Component Flash Fs<a class="headerlink" href="#component-flash-fs" title="Link to this heading"></a></h1>
+<p><strong>中文</strong> | <a class="reference external" href="{project_name}_en">English</a></p>
+<p># RA8P1 Titan Board 开发板 Filesystem 使用说明
+RA8P1 Titan Board 开发板 Filesystem 使用说明
+==</p>
+<p><strong>中文</strong> | <a class="reference external" href="./README_EN.md">**English**</a></p>
+<p>## 简介
+简介
+--</p>
+<p>FAL (Flash Abstraction Layer) Flash 抽象层，是对 Flash 及基于 Flash 的分区进行管理、操作的抽象层，对上层统一了 Flash 及 分区操作的 API (框架图如下所示)，并具有以下特性：</p>
+<ul class="simple">
+<li><p>支持静态可配置的分区表，并可关联多个 Flash 设备；</p></li>
+<li><p>分区表支持 <strong>自动装载</strong> 。避免在多固件项目，分区表被多次定义的问题；</p></li>
+<li><p>代码精简，对操作系统 <strong>无依赖</strong> ，可运行于裸机平台，比如对资源有一定要求的 Bootloader；</p></li>
+<li><p>统一的操作接口。保证了文件系统、OTA、NVM（例如：<a class="reference external" href="https://github.com/armink-rtt-pkgs/EasyFlash">EasyFlash</a>） 等对 Flash 有一定依赖的组件，底层 Flash 驱动的可重用性；</p></li>
+<li><p>自带基于 Finsh/MSH 的测试命令，可以通过 Shell 按字节寻址的方式操作（读写擦） Flash 或分区，方便开发者进行调试、测试；</p></li>
+</ul>
+<img alt="image-20250730135236514" src="component_examples/figures/image-20250730135236514.png" />
+<p>本示例中将使用 Titan Board 板载 Ospi Flash 结合 RT-Thread FAL 组件，使用 littlefs 构建文件系统。</p>
+<p>## 硬件说明
+硬件说明
+--</p>
+<img alt="image-20250730135427623" src="component_examples/figures/image-20250730135427623.png" />
+<p>## 软件说明
+软件说明
+--</p>
+<p>本例程的文件系统初始化源码位于 <code class="code docutils literal notranslate"><span class="pre">./board/ports/filesystem/drv_filesystem.c</span></code> 中：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl>
+<dt>/*</dt><dd><ul class="simple">
+<li><p>Copyright (c) 2006-2021, RT-Thread Development Team</p></li>
+<li></li>
+<li><p>SPDX-License-Identifier: Apache-2.0</p></li>
+<li></li>
+<li><p>Change Logs:</p></li>
+<li><p>Date           Author       Notes</p></li>
+<li><p>2018-12-13     balanceTWK   add sdcard port file</p></li>
+<li><p>2021-05-10     Meco Man     fix a bug that cannot use fatfs in the main thread at starting up</p></li>
+<li><p>2021-07-28     Meco Man     implement romfs as the root filesystem</p></li>
+</ul>
+<p><a href="#id2"><span class="problematic" id="id3">*</span></a>/</p>
+</dd>
+</dl>
+<p>#include &lt;rtthread.h&gt;
+#include &lt;dfs_romfs.h&gt;
+#include &lt;dfs_fs.h&gt;
+#include &lt;dfs_file.h&gt;</p>
+<p>#if DFS_FILESYSTEMS_MAX &lt; 4
+#error &quot;Please define DFS_FILESYSTEMS_MAX more than 4&quot;
+#endif
+#if DFS_FILESYSTEM_TYPES_MAX &lt; 4
+#error &quot;Please define DFS_FILESYSTEM_TYPES_MAX more than 4&quot;
+#endif</p>
+<p>#define DBG_TAG &quot;app.filesystem&quot;
+#define DBG_LVL DBG_INFO
+#include &lt;rtdbg.h&gt;</p>
+<p>#ifdef BSP_USING_FS_AUTO_MOUNT
+#ifdef BSP_USING_SDCARD_FATFS
+static int onboard_sdcard_mount(void)
+{</p>
+<blockquote>
+<div><p>if (dfs_mount(&quot;sd&quot;, &quot;/sdcard&quot;, &quot;elm&quot;, 0, 0) == RT_EOK)
+{</p>
+<blockquote>
+<div><p>LOG_I(&quot;SD card mount to '/sdcard'&quot;);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;SD card mount to '/sdcard' failed!&quot;);</p>
+</div></blockquote>
+<p>}</p>
+<p>return RT_EOK;</p>
+</div></blockquote>
+<p>}
+#endif /* BSP_USING_SDCARD_FATFS <em>/
+#endif /</em> BSP_USING_FS_AUTO_MOUNT <a href="#id4"><span class="problematic" id="id5">*</span></a>/</p>
+<p>#ifdef BSP_USING_FLASH_FS_AUTO_MOUNT
+#ifdef BSP_USING_FLASH_FATFS
+#define FS_PARTITION_NAME &quot;filesystem&quot;</p>
+<p>static int onboard_fal_mount(void)
+{</p>
+<blockquote>
+<div><p>/* 初始化 fal 功能 <em>/
+extern int fal_init(void);
+extern struct rt_device</em> fal_mtd_nor_device_create(const char <em>parition_name);
+fal_init ();
+/</em> 在 spi flash 中名为 &quot;filesystem&quot; 的分区上创建一个块设备 <a href="#id6"><span class="problematic" id="id7">*</span></a>/
+struct rt_device <a href="#id8"><span class="problematic" id="id9">*</span></a>mtd_dev = fal_mtd_nor_device_create (FS_PARTITION_NAME);
+if (mtd_dev == NULL)
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;Can't create a mtd device on '%s' partition.&quot;, FS_PARTITION_NAME);
+return -RT_ERROR;</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>LOG_D(&quot;Create a mtd device on the %s partition of flash successful.&quot;, FS_PARTITION_NAME);</p>
+</div></blockquote>
+<p>}</p>
+<p>/* 挂载 spi flash 中名为 &quot;filesystem&quot; 的分区上的文件系统 <a href="#id10"><span class="problematic" id="id11">*</span></a>/
+if (dfs_mount (FS_PARTITION_NAME, &quot;/&quot;, &quot;lfs&quot;, 0, 0) == 0)
+{</p>
+<blockquote>
+<div><p>LOG_I(&quot;Filesystem initialized!&quot;);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>dfs_mkfs (&quot;lfs&quot;, FS_PARTITION_NAME);
+if (dfs_mount (&quot;filesystem&quot;, &quot;/&quot;, &quot;lfs&quot;, 0, 0) == 0)
+{</p>
+<blockquote>
+<div><p>LOG_I(&quot;Filesystem initialized!&quot;);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;Failed to initialize filesystem!&quot;);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>return RT_EOK;</p>
+</div></blockquote>
+<p>}
+#endif /<em>BSP_USING_FLASH_FATFS</em>/
+#endif /<em>BSP_USING_FLASH_FS_AUTO_MOUNT</em>/</p>
+<p>const struct romfs_dirent _romfs_root[] =
+{
+#ifdef BSP_USING_SDCARD_FATFS</p>
+<blockquote>
+<div><p>{ROMFS_DIRENT_DIR, &quot;sdcard&quot;, RT_NULL, 0},</p>
+</div></blockquote>
+<p>#endif</p>
+<dl class="simple">
+<dt>#ifdef BSP_USING_FLASH_FATFS</dt><dd><p>{ ROMFS_DIRENT_DIR, &quot;fal&quot;, RT_NULL, 0 },</p>
+</dd>
+</dl>
+<p>#endif
+};</p>
+<p>const struct romfs_dirent romfs_root =
+{
+ROMFS_DIRENT_DIR, &quot;/&quot;, (rt_uint8_t*) _romfs_root, sizeof(_romfs_root) / sizeof(_romfs_root[0])
+};</p>
+<p>static int filesystem_mount(void)
+{</p>
+<dl>
+<dt>#ifdef BSP_USING_FS</dt><dd><p>if (dfs_mount(RT_NULL, &quot;/&quot;, &quot;rom&quot;, 0, &amp;(romfs_root)) != 0)
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;rom mount to '/' failed!&quot;);</p>
+</div></blockquote>
+<p>}</p>
+<p>/* 确保块设备注册成功之后再挂载文件系统 <a href="#id12"><span class="problematic" id="id13">*</span></a>/
+rt_thread_delay(500);</p>
+</dd>
+</dl>
+<p>#endif
+#ifdef BSP_USING_FS_AUTO_MOUNT</p>
+<blockquote>
+<div><p>onboard_sdcard_mount();</p>
+</div></blockquote>
+<p>#endif /* BSP_USING_FS_AUTO_MOUNT <a href="#id14"><span class="problematic" id="id15">*</span></a>/</p>
+<dl class="simple">
+<dt>#ifdef BSP_USING_FLASH_FS_AUTO_MOUNT</dt><dd><p>onboard_fal_mount ();</p>
+</dd>
+</dl>
+<p>#endif</p>
+<blockquote>
+<div><p>return RT_EOK;</p>
+</div></blockquote>
+<p>}
+INIT_COMPONENT_EXPORT(filesystem_mount);</p>
+<p>## 编译&amp;下载
+编译&amp;下载
+--</p>
+<ul class="simple">
+<li><p>RT-Thread Studio：在RT-Thread Studio 的包管理器中下载 Titan Board 资源包，然后创建新工程，执行编译。</p></li>
+</ul>
+<p>编译完成后，将开发板的 Jlink 接口与 PC 机连接，然后将固件下载至开发板。</p>
+<p>## 运行效果
+运行效果
+--</p>
+<p>按下复位按键重启开发板，观察开发板终端日志。</p>
+<img alt="PixPin_2025-07-25_15-16-40" src="component_examples/figures/PixPin_2025-07-25_15-16-40.png" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="index.html" class="btn btn-neutral float-left" title="组件示例" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../usage/index.html" class="btn btn-neutral float-right" title="使用说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Spi Bmi088 &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="Driver Usb Pcdc" href="driver_usb_pcdc.html" />
+    <link rel="prev" title="Driver Iic Ist8310" href="driver_iic_ist8310.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">驱动示例</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="driver_iic_ist8310.html">Driver Iic Ist8310</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Driver Spi Bmi088</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_usb_pcdc.html">Driver Usb Pcdc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_rtc.html">Driver Rtc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_gpt.html">Driver Gpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_hyperram.html">Driver Hyperram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_usb_hhid.html">Driver Usb Hhid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_rgb_lcd.html">Driver Rgb Lcd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_wifi.html">Driver Wifi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_sdcard.html">Driver Sdcard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_adc.html">Driver Adc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_wdt.html">Driver Wdt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../component_examples/index.html">组件示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/index.html">使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API 文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/index.html">开发指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">驱动示例</a></li>
+      <li class="breadcrumb-item active">Driver Spi Bmi088</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/driver_examples/driver_spi_bmi088.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="driver-spi-bmi088">
+<h1>Driver Spi Bmi088<a class="headerlink" href="#driver-spi-bmi088" title="Link to this heading"></a></h1>
+<p><strong>中文</strong> | <a class="reference external" href="{project_name}_en">English</a></p>
+<p># RA8P1 Titan Board BMI088 陀螺仪使用说明
+RA8P1 Titan Board BMI088 陀螺仪使用说明
+==</p>
+<p><strong>中文</strong> | <a class="reference external" href="./README_EN.md">**English**</a></p>
+<p>## 简介
+简介
+--</p>
+<p>本例程主要介绍了如何在 Titan Board 上使用 RT-Thread 的 SPI 框架与 BMI088 陀螺仪通信。</p>
+<p>## 硬件说明
+硬件说明
+--</p>
+<p>Titan Board 使用 SPI0 与 BMI088 陀螺仪通信。</p>
+<img alt="image-20250731090541599" src="driver_examples/figures/image-20250731090541599.png" />
+<p>## FSP配置说明
+FSP配置说明
+--</p>
+<p>打开 FSP 工具，新建 Stacks 并选择 r_spi_b：</p>
+<img alt="image-20250730160421315" src="driver_examples/figures/image-20250730160421315.png" />
+<p>配置 SPI0 引脚：</p>
+<img alt="image-20250730160615804" src="driver_examples/figures/image-20250730160615804.png" />
+<p>## RT-Thread Settings配置
+RT-Thread Settings配置
+--</p>
+<p>打开 RT-Thread Settings 开启 SPI0 与 BMI088 软件包：</p>
+<img alt="image-20250730160802572" src="driver_examples/figures/image-20250730160802572.png" />
+<p>## 示例工程介绍
+示例工程介绍
+--</p>
+<p>BMI088 驱动示例程序位于 <code class="code docutils literal notranslate"><span class="pre">./packages/bmi088-latest/samples/bmi088_sample</span></code>：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl>
+<dt>/*</dt><dd><ul class="simple">
+<li><p>Copyright (c) 2006-2020, RT-Thread Development Team</p></li>
+<li></li>
+<li><p>SPDX-License-Identifier: Apache-2.0</p></li>
+<li></li>
+<li><p>Change Logs:</p></li>
+<li><p>Date           Author      Notes</p></li>
+<li><p>2020-03-10     MyGuo       the first version</p></li>
+</ul>
+<p><a href="#id2"><span class="problematic" id="id3">*</span></a>/</p>
+</dd>
+</dl>
+<p>#include &lt;rtthread.h&gt;
+#include &lt;rtdbg.h&gt;
+#include &quot;bmi088.h&quot;
+#include &quot;sensor_intf_bmi088.h&quot;
+#include &quot;drv_spi.h&quot;
+#include &quot;bmi088_sample.h&quot;</p>
+<p>#define BMI088_BUS_NAME &quot;spi0&quot;
+#define BMI088A_SPI_NAME &quot;spi00&quot;
+#define BMI088G_SPI_NAME &quot;spi01&quot;</p>
+<p>static rt_device_t acce_device_t;
+static rt_device_t gyro_device_t;
+struct rt_sensor_data acc_test;
+struct rt_sensor_data gyr_test;</p>
+<p>#define BMI088A_PIN     BSP_IO_PORT_12_PIN_10
+#define BMI088G_PIN     BSP_IO_PORT_12_PIN_14</p>
+<p>void imu_thread_entry(void* parameter)
+{</p>
+<blockquote>
+<div><p>// 配置spi,配置片选引脚(要在acc、gyr初始化之前配置,因为器件初始化中涉及到引脚操作)
+rt_hw_spi_device_attach(BMI088_BUS_NAME, BMI088A_SPI_NAME, 0x060C);
+rt_hw_spi_device_attach(BMI088_BUS_NAME, BMI088G_SPI_NAME, 0x0704);</p>
+<p>// 注册传感器
+struct rt_sensor_config acc_cfg = {0};
+struct rt_sensor_config gyr_cfg = {0};</p>
+<p>acc_cfg.intf.dev_name = BMI088A_SPI_NAME;
+gyr_cfg.intf.dev_name = BMI088G_SPI_NAME;</p>
+<p>rt_hw_bmi088_init(&quot;bmi&quot;, &amp;acc_cfg, &amp;gyr_cfg);</p>
+<p>acce_device_t = rt_device_find(&quot;acce_bmi&quot;);
+if (acce_device_t == RT_NULL)
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;Can't find acce devicern&quot;);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>rt_device_open(acce_device_t, RT_DEVICE_OFLAG_RDWR);</p>
+</div></blockquote>
+<p>}</p>
+<p>gyro_device_t = rt_device_find(&quot;gyro_bmi&quot;);
+if (gyro_device_t == RT_NULL)
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;Can't find gyro devicern&quot;);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>rt_device_open(gyro_device_t, RT_DEVICE_OFLAG_RDWR);</p>
+</div></blockquote>
+<p>}</p>
+<p>while (1)
+{</p>
+<blockquote>
+<div><p>_bmi088_get_data((rt_sensor_t) acce_device_t, &amp;acc_test);
+_bmi088_get_data((rt_sensor_t) gyro_device_t, &amp;gyr_test);</p>
+<p>rt_kprintf(&quot;acce value:[X]:%d [Y]:%d [Z]:%dn&quot;, acc_test.data.acce.x, acc_test.data.acce.y, acc_test.data.acce.z);
+rt_kprintf(&quot;gyro value:[X]:%d [Y]:%d [Z]:%dnn&quot;, gyr_test.data.gyro.x, gyr_test.data.gyro.y, gyr_test.data.gyro.z);</p>
+<p>rt_thread_mdelay(500);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>void bmi088_app(void)
+{</p>
+<blockquote>
+<div><p>rt_thread_t bmi088 = rt_thread_create(&quot;bmi088&quot;, imu_thread_entry, RT_NULL, 2048, 25, 10);
+if(bmi088 != RT_NULL)
+{</p>
+<blockquote>
+<div><p>rt_thread_startup(bmi088);</p>
+</div></blockquote>
+<p>}</p>
+<p>return;</p>
+</div></blockquote>
+<p>}
+MSH_CMD_EXPORT(bmi088_app, bmi088_app);</p>
+<p>## 编译&amp;下载
+编译&amp;下载
+--</p>
+<ul class="simple">
+<li><p>RT-Thread Studio：在RT-Thread Studio 的包管理器中下载 Titan Board 资源包，然后创建新工程，执行编译。</p></li>
+</ul>
+<p>编译完成后，将开发板的 Jlink 接口与 PC 机连接，然后将固件下载至开发板。</p>
+<p>## 运行效果
+运行效果
+--</p>
+<p>打开串口工具，在终端里输入 bmi088_app 指令获取陀螺仪数据：</p>
+<img alt="PixPin_2025-07-28_10-09-31" src="driver_examples/figures/PixPin_2025-07-28_10-09-31.png" />
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="driver_iic_ist8310.html" class="btn btn-neutral float-left" title="Driver Iic Ist8310" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="driver_usb_pcdc.html" class="btn btn-neutral float-right" title="Driver Usb Pcdc" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

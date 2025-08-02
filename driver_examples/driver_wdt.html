@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Driver Wdt &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/translations.js?v=beaddf03"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="组件示例" href="../component_examples/index.html" />
+    <link rel="prev" title="Driver Adc" href="driver_adc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">快速开始</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">驱动示例</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="driver_iic_ist8310.html">Driver Iic Ist8310</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_spi_bmi088.html">Driver Spi Bmi088</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_usb_pcdc.html">Driver Usb Pcdc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_rtc.html">Driver Rtc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_gpt.html">Driver Gpt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_hyperram.html">Driver Hyperram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_usb_hhid.html">Driver Usb Hhid</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_rgb_lcd.html">Driver Rgb Lcd</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_wifi.html">Driver Wifi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_sdcard.html">Driver Sdcard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="driver_adc.html">Driver Adc</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Driver Wdt</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../component_examples/index.html">组件示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage/index.html">使用说明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/index.html">API 文档</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guide/index.html">开发指南</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">驱动示例</a></li>
+      <li class="breadcrumb-item active">Driver Wdt</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/driver_examples/driver_wdt.rst.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="driver-wdt">
+<h1>Driver Wdt<a class="headerlink" href="#driver-wdt" title="Link to this heading"></a></h1>
+<p><strong>中文</strong> | <a class="reference external" href="{project_name}_en">English</a></p>
+<p># RA8P1 Titan Board WDT 使用说明
+RA8P1 Titan Board WDT 使用说明
+==</p>
+<p><strong>中文</strong> | <a class="reference external" href="./README_EN.md">**English**</a></p>
+<p>## 简介
+简介
+--</p>
+<p>看门狗设备可以保证我们的代码在我们的预期中进行，可以有效防止我们的程序因为一些其它不可控因素导致代码”跑飞“；本例程主要介绍了如何在 Titan Board 上使用窗口 WDT 设备;</p>
+<p>## 硬件说明
+硬件说明
+--</p>
+<p>无</p>
+<p>## FSP配置说明
+FSP配置说明
+--</p>
+<p>打开 FSP 工具 新建 Stacks 选择 r_wdt：</p>
+<img alt="image-20250731092603474" src="driver_examples/figures/image-20250731092603474.png" />
+<p><a href="#id2"><span class="problematic" id="id3">**</span></a>注意：<a href="#id4"><span class="problematic" id="id5">**</span></a>使用 WDT 需要使能 OFS0 寄存器配置。</p>
+<img alt="image-20250731092848714" src="driver_examples/figures/image-20250731092848714.png" />
+<p>## RT-Thread Settings配置
+RT-Thread Settings配置
+--</p>
+<img alt="image-20250731092657257" src="driver_examples/figures/image-20250731092657257.png" />
+<p>## 示例工程说明
+示例工程说明
+--</p>
+<p>示例程序位于 <code class="code docutils literal notranslate"><span class="pre">projects/Titan_driver_wdt/src/hal_entry.c</span></code>。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+<dl>
+<dt>/*</dt><dd><ul class="simple">
+<li><p>Copyright (c) 2006-2024, RT-Thread Development Team</p></li>
+<li></li>
+<li><p>SPDX-License-Identifier: Apache-2.0</p></li>
+<li></li>
+<li><p>Change Logs:</p></li>
+<li><p>Date           Author        Notes</p></li>
+<li><p>2024-03-11     Wangyuqiang   first version</p></li>
+</ul>
+<p><a href="#id6"><span class="problematic" id="id7">*</span></a>/</p>
+</dd>
+</dl>
+<p>#include &lt;rtthread.h&gt;
+#include &quot;hal_data.h&quot;
+#include &lt;rtdevice.h&gt;
+#include &lt;board.h&gt;</p>
+<p>#define DBG_TAG &quot;wdt&quot;
+#define DBG_LVL DBG_LOG
+#include &lt;rtdbg.h&gt;</p>
+<p>#define WDT_DEVICE_NAME &quot;wdt&quot;    // 默认看门狗设备名，视 BSP 而定
+#define WDT_FEED_INTERVAL 1000   // 喂狗间隔（单位 ms）
+#define WDT_TIMEOUT 3            // 看门狗超时时间（单位 s）</p>
+<p>static rt_device_t wdt_dev = RT_NULL;
+static rt_thread_t feed_thread = RT_NULL;</p>
+<p>#define LED_PIN_0    BSP_IO_PORT_06_PIN_00 /* Onboard LED pins <a href="#id8"><span class="problematic" id="id9">*</span></a>/</p>
+<p>void hal_entry(void)
+{</p>
+<blockquote>
+<div><p>rt_kprintf(&quot;nHello RT-Thread!n&quot;);
+rt_kprintf(&quot;==================================================n&quot;);
+rt_kprintf(&quot;This example project is an driver wdt routine!n&quot;);
+rt_kprintf(&quot;==================================================n&quot;);</p>
+<p>LOG_I(&quot;Tips:&quot;);
+LOG_I(&quot;You can run wdt testcase by executing the instruction: 'wdt_sample'&quot;);</p>
+<p>while (1)
+{</p>
+<blockquote>
+<div><p>rt_pin_write(LED_PIN_0, PIN_HIGH);
+rt_thread_mdelay(1000);
+rt_pin_write(LED_PIN_0, PIN_LOW);
+rt_thread_mdelay(1000);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>static void feed_dog_entry(void <a href="#id10"><span class="problematic" id="id11">*</span></a>parameter)
+{</p>
+<blockquote>
+<div><p>int count = 0;</p>
+<p>while (1)
+{</p>
+<blockquote>
+<div><p>if (count &lt; 10)
+{</p>
+<blockquote>
+<div><p>rt_device_control(wdt_dev, RT_DEVICE_CTRL_WDT_KEEPALIVE, RT_NULL);
+LOG_I(&quot;[FeedDog] Feeding watchdog... %d&quot;, count);</p>
+</div></blockquote>
+<p>}
+else
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;[FeedDog] Simulate exception! Stop feeding.&quot;);</p>
+</div></blockquote>
+<p>}</p>
+<p>count++;
+rt_thread_mdelay(WDT_FEED_INTERVAL);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<p>static int wdt_sample(void)
+{</p>
+<blockquote>
+<div><p>rt_err_t ret;</p>
+<p>wdt_dev = rt_device_find(WDT_DEVICE_NAME);
+if (wdt_dev == RT_NULL)
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;Cannot find %s device!&quot;, WDT_DEVICE_NAME);
+return -1;</p>
+</div></blockquote>
+<p>}</p>
+<p>ret = rt_device_control(wdt_dev, RT_DEVICE_CTRL_WDT_START, RT_NULL);
+if (ret != RT_EOK)
+{</p>
+<blockquote>
+<div><p>LOG_E(&quot;Start watchdog failed!&quot;);
+return -1;</p>
+</div></blockquote>
+<p>}</p>
+<p>LOG_I(&quot;Watchdog started...&quot;, WDT_TIMEOUT);</p>
+<p>feed_thread = rt_thread_create(&quot;feed_dog&quot;, feed_dog_entry, RT_NULL, 1024, 10, 10);
+if (feed_thread != RT_NULL)</p>
+<blockquote>
+<div><p>rt_thread_startup(feed_thread);</p>
+</div></blockquote>
+<p>return 0;</p>
+</div></blockquote>
+<p>}
+MSH_CMD_EXPORT(wdt_sample, wdt_sample);</p>
+<p>## 编译&amp;下载
+编译&amp;下载
+--</p>
+<ul class="simple">
+<li><p>RT-Thread Studio：在 RT-Thread Studio 的包管理器中下载 Titan Board 资源包，然后创建新工程，执行编译。</p></li>
+</ul>
+<p>编译完成后，将开发板的 Jlink 接口与 PC 机连接，然后将固件下载至开发板。</p>
+<p>## 运行效果
+运行效果
+--</p>
+<p>在终端输入 wdt_sample 指令运行 WDT 测试程序，在喂狗 10 次后停止喂狗，模拟了程序异常情况。</p>
+<img alt="PixPin_2025-07-28_10-11-00" src="driver_examples/figures/PixPin_2025-07-28_10-11-00.png" />
+<p>## 引用参考
+引用参考
+--</p>
+<p>设备与驱动：<a class="reference external" href="https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/programming-manual/device/watchdog/watchdog">WDT 设备</a></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="driver_adc.html" class="btn btn-neutral float-left" title="Driver Adc" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../component_examples/index.html" class="btn btn-neutral float-right" title="组件示例" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
