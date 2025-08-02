@@ -1,0 +1,369 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>瑞萨 EK-RA8D1 开发板 BSP 说明 &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="瑞萨 EK-RA8D1 开发板 BSP 说明" href="../Titan_driver_usb_hhid/README.html" />
+    <link rel="prev" title="RA8P1 Titan Board 开发板 GPT 使用说明" href="../Titan_driver_gpt/README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">驱动示例</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_iic_ist8310/README.html">RA8P1 Titan Board 开发板  IST8310 示例说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_spi_bmi088/README.html">RA8P1 Titan Board BMI088 陀螺仪使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_usb_pcdc/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_rtc/README.html">RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_gpt/README.html">RA8P1 Titan Board 开发板 GPT 使用说明</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">瑞萨 EK-RA8D1 开发板 BSP 说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">开发板介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">外设支持</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">使用说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">支持的编译平台</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#fsp">FSP版本说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">快速上手</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">进阶使用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">联系人信息</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">贡献代码</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_usb_hhid/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_rgb_lcd/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_wifi/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_sdcard/README.html">RA8P1 Titan Board SD卡文件系统使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_adc/README.html">RA8P1 Titan Board ADC应用示例说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_wdt/README.html">RA8P1 Titan Board WDT 使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">驱动示例</a></li>
+      <li class="breadcrumb-item active">瑞萨 EK-RA8D1 开发板 BSP 说明</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/driver_examples/Titan_driver_hyperram/README.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ek-ra8d1-bsp">
+<h1>瑞萨 EK-RA8D1 开发板 BSP 说明<a class="headerlink" href="#ek-ra8d1-bsp" title="Link to this heading"></a></h1>
+<p>中文|<a class="reference internal" href="README_EN.html"><span class="std std-doc">English</span></a></p>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>本文档为 EK-RA8D1 开发板提供的 BSP (板级支持包) 说明。通过阅读快速上手章节开发者可以快速地上手该 BSP，将 RT-Thread 运行在开发板上。</p>
+<p>主要内容如下：</p>
+<ul class="simple">
+<li><p>开发板介绍</p></li>
+<li><p>BSP 快速上手指南</p></li>
+</ul>
+</section>
+<section id="id2">
+<h2>开发板介绍<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>基于瑞萨 RA8D1 MCU 开发的 EK-RA8D1 评估板，通过灵活配置软件包和 IDE，可帮助用户对 RA8 MCU 群组的特性轻松进行评估，并对嵌入系统应用程序进行开发。</p>
+<p>开发板正面外观如下图：</p>
+<p><img alt="" src="driver_examples/Titan_driver_hyperram/docs/picture/front.png" /></p>
+<p>该开发板常用 <strong>板载资源</strong> 如下：</p>
+<ul class="simple">
+<li><p>MCU：R7FA8D1BH，480MHz，<strong>Arm®Cortex®-M85</strong> 内核，2MB 代码闪存, 1MB SRAM</p></li>
+<li><p>Jlink OB</p></li>
+<li><p>OSPI FLASH（64MX8）</p></li>
+<li><p>USB-Host</p></li>
+<li><p>USB-Device</p></li>
+<li><p>CANFD</p></li>
+<li><p>以太网接口</p></li>
+<li><p>2个PMOD+Arduino+micro BUS接口</p></li>
+<li><p>3个用户LED</p></li>
+<li><p>3个按键：2个用户按键，1个复位按键</p></li>
+</ul>
+<p><strong>更多详细资料及工具</strong></p>
+</section>
+<section id="id3">
+<h2>外设支持<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>本 BSP 目前对外设的支持情况如下：</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><strong>片上外设</strong></p></th>
+<th class="head text-center"><p><strong>支持情况</strong></p></th>
+<th class="head text-center"><p><strong>备注</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>UART</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p>UART9 为默认日志输出端口</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>GPIO</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>USB</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p>TinyUSB</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Camera</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p>ov2640、ov7725、ov7670…</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SDHC</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p>1bit、4bit</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ADC</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DAC</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SPI</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PWM</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RTC</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>FLASH</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p>片上flash</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>WDT</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IIC</p></td>
+<td class="text-center"><p>支持</p></td>
+<td class="text-center"><p></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>注意：仓库刚拉下来是最小系统，若需添加/使能其他外设需参考：<a class="reference external" href="https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/tutorial/make-bsp/renesas-ra/RA%E7%B3%BB%E5%88%97BSP%E5%A4%96%E8%AE%BE%E9%A9%B1%E5%8A%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B">外设驱动使用教程 (rt-thread.org)</a></p></li>
+</ul>
+</section>
+<section id="id4">
+<h2>使用说明<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>使用说明分为如下两个章节：</p>
+<ul>
+<li><p>快速上手</p>
+<p>本章节是为刚接触 RT-Thread 的新手准备的使用说明，遵循简单的步骤即可将 RT-Thread 操作系统运行在该开发板上，看到实验效果 。</p>
+</li>
+<li><p>进阶使用</p>
+<p>本章节是为需要在 RT-Thread 操作系统上使用更多开发板资源的开发者准备的。通过使用 ENV 工具对 BSP 进行配置，可以开启更多板载资源，实现更多高级功能。</p>
+</li>
+</ul>
+<section id="id5">
+<h3>支持的编译平台<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>armclang（AC6 V6.19）</p></li>
+<li><p>LLVM（V16/17）<a class="reference external" href="https://github.com/ARM-software/LLVM-embedded-toolchain-for-Arm/releases/tag/release-17.0.1">ARM-software/LLVM-embedded-toolchain-for-Arm (github.com)</a></p></li>
+</ul>
+</section>
+</section>
+<section id="fsp">
+<h2>FSP版本说明<a class="headerlink" href="#fsp" title="Link to this heading"></a></h2>
+<p>本BSP使用的是FSP5.1.0版本，进行外设相关开发需要下载并安装。</p>
+<ul class="simple">
+<li><p>下载链接：<a class="reference external" href="https://github.com/renesas/fsp/releases/download/v5.1.0/setup_fsp_v5_1_0_rasc_v2023-10.exe">rasc-5.1.0</a></p></li>
+<li><p>注意：BSP默认是最小系统，若需添加/使能其他外设需参考：<a class="reference external" href="https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/tutorial/make-bsp/renesas-ra/RA%E7%B3%BB%E5%88%97BSP%E5%A4%96%E8%AE%BE%E9%A9%B1%E5%8A%A8%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B">外设驱动使用教程 (rt-thread.org)</a></p></li>
+</ul>
+<section id="id6">
+<h3>快速上手<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<section id="mdk">
+<h4>1、使用 MDK 编译：<a class="headerlink" href="#mdk" title="Link to this heading"></a></h4>
+<p><strong>注意：如果使用master开发需要先打开ENV进入meuconfig然后退出保存配置，再输入scons --target=mdk5生成下工程</strong></p>
+<p>本 BSP 目前提供 MDK5 工程。下面以 MDK5 开发环境为例，介绍如何将系统运行起来。</p>
+<p><strong>编译下载</strong></p>
+<ul class="simple">
+<li><p>编译：双击 project.uvprojx 文件，打开 MDK5 工程，编译程序。</p></li>
+<li><p>下载：点击 MDK 的 Debug 按钮进行下载调试</p></li>
+</ul>
+</section>
+<section id="llvm">
+<h4>2、使用 LLVM 编译<a class="headerlink" href="#llvm" title="Link to this heading"></a></h4>
+<p>使用 env 工具打开当前 bsp，设定要使用的工具链和对应的路径。</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="w"> </span><span class="nv">RTT_CC</span><span class="o">=</span>llvm-arm
+<span class="nb">set</span><span class="w"> </span><span class="nv">RTT_EXEC_PATH</span><span class="o">=</span>D:<span class="se">\P</span>rogrem<span class="se">\L</span>LVMEmbeddedToolchainForArm-17.0.1-Windows-x86_64<span class="se">\b</span>in
+</pre></div>
+</div>
+<p>然后运行 scons 命令，执行编译</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>scons
+</pre></div>
+</div>
+<p><strong>查看运行结果</strong></p>
+<p>下载程序成功之后，系统会自动运行并打印系统信息。</p>
+<p>连接开发板对应串口到 PC , 在终端工具里打开相应的串口（115200-8-1-N），复位设备后，可以看到 RT-Thread 的输出信息。输入 help 命令可查看系统中支持的命令。</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>initialize<span class="w"> </span>rti_board_start:0<span class="w"> </span><span class="k">done</span>
+
+<span class="w"> </span><span class="se">\ </span><span class="p">|</span><span class="w"> </span>/
+-<span class="w"> </span>RT<span class="w"> </span>-<span class="w">     </span>Thread<span class="w"> </span>Operating<span class="w"> </span>System
+<span class="w"> </span>/<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\ </span><span class="w">    </span><span class="m">5</span>.1.0<span class="w"> </span>build<span class="w"> </span>Oct<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">16</span>:14:05
+<span class="w"> </span><span class="m">2006</span><span class="w"> </span>-<span class="w"> </span><span class="m">2022</span><span class="w"> </span>Copyright<span class="w"> </span>by<span class="w"> </span>RT-Thread<span class="w"> </span>team
+<span class="k">do</span><span class="w"> </span>components<span class="w"> </span>initialization.
+initialize<span class="w"> </span>rti_board_end:0<span class="w"> </span><span class="k">done</span>
+initialize<span class="w"> </span>finsh_system_init:0<span class="w"> </span><span class="k">done</span>
+
+Hello<span class="w"> </span>RT-Thread!
+msh<span class="w"> </span>&gt;
+</pre></div>
+</div>
+<p><strong>应用入口函数</strong></p>
+<p>应用层的入口函数在 <strong>bsp\renesas\ra8d1-ek\src\hal_entry.c</strong> 中 的 <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">hal_entry(void)</span></code> 。用户编写的源文件可直接放在 src 目录下。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">hal_entry</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello RT-Thread!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_HIGH</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_LOW</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id7">
+<h3>进阶使用<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p><strong>资料及文档</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.renesas.cn/cn/zh/products/microcontrollers-microprocessors/ra-cortex-m-mcus/ek-ra8d1-evaluation-kit-ra8d1-mcu-group#overview">开发板官网主页</a></p></li>
+<li><p><a class="reference external" href="https://www.renesas.cn/cn/zh/document/mat/ek-ra8d1-v1-users-manual?r=25452351">开发板用户手册</a></p></li>
+<li><p><a class="reference external" href="https://www2.renesas.cn/cn/zh/document/gde/1520091">瑞萨RA MCU 基础知识</a></p></li>
+</ul>
+<p><strong>ENV 配置</strong></p>
+<ul class="simple">
+<li><p>如何使用 ENV 工具：<a class="reference external" href="https://www.rt-thread.org/document/site/#/development-tools/env/env">RT-Thread env 工具用户手册</a></p></li>
+</ul>
+<p>此 BSP 默认只开启了 UART9 的功能，如果需使用更多高级功能例如组件、软件包等，需要利用 ENV 工具进行配置。</p>
+<p>步骤如下：</p>
+<ol class="arabic simple">
+<li><p>在 bsp 下打开 env 工具。</p></li>
+<li><p>输入<code class="docutils literal notranslate"><span class="pre">menuconfig</span></code>命令配置工程，配置好之后保存退出。</p></li>
+<li><p>输入<code class="docutils literal notranslate"><span class="pre">pkgs</span> <span class="pre">--update</span></code>命令更新软件包。</p></li>
+<li><p>输入<code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--target=mdk5</span></code> 命令重新生成工程。</p></li>
+</ol>
+<p><strong>FSP配置</strong></p>
+<ul class="simple">
+<li><p>如何使用 FSP：<a class="reference external" href="https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/tutorial/make-bsp/renesas-ra/RA%E7%B3%BB%E5%88%97%E4%BD%BF%E7%94%A8FSP%E9%85%8D%E7%BD%AE%E5%A4%96%E8%AE%BE%E9%A9%B1%E5%8A%A8?id=ra%E7%B3%BB%E5%88%97%E4%BD%BF%E7%94%A8-fsp-%E9%85%8D%E7%BD%AE%E5%A4%96%E8%AE%BE%E9%A9%B1%E5%8A%A8">RA系列使用 FSP 配置外设驱动</a></p></li>
+</ul>
+<p>目前仓库 bsp 默认使能最小体量配置，用户可通过如下步骤使能 env 外设配置：</p>
+<ol class="arabic simple">
+<li><p>在 bsp 目录下打开 env 工具，使用 <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--target=mdk5</span></code>命令生成 MDK 工程。</p></li>
+<li><p>打开 bsp 目录下的<code class="docutils literal notranslate"><span class="pre">project.uvprojx</span></code>文件，选择上方导航栏的 <code class="docutils literal notranslate"><span class="pre">Software</span> <span class="pre">Components</span></code>配置，打开后找到<code class="docutils literal notranslate"><span class="pre">Flex</span> <span class="pre">Software</span></code>下的<code class="docutils literal notranslate"><span class="pre">RA</span> <span class="pre">Configuration</span></code>旁的配置按钮，该操作会自动查找当前电脑环境下安装的 fsp 版本，选择指定版本后进入 fsp。
+<img alt="" src="driver_examples/docs/figures/mdk_rasc.png" /></p></li>
+<li><p>在进入 fsp 后我们可以发现，已经存在了一些已经配置完成的外设，此时我们点击<code class="docutils literal notranslate"><span class="pre">Generate</span> <span class="pre">Project</span> <span class="pre">Content</span></code>按钮即可生成所需驱动文件。
+<img alt="" src="driver_examples/docs/figures/fsp_configure.png" /></p></li>
+<li><p>接下来回到 env，使能所需的外设配置后保存退出即可。</p></li>
+</ol>
+</section>
+</section>
+<section id="id8">
+<h2>联系人信息<a class="headerlink" href="#id8" title="Link to this heading"></a></h2>
+<p>在使用过程中若您有任何的想法和建议，建议您通过以下方式来联系到我们  <a class="reference external" href="https://club.rt-thread.org/">RT-Thread 社区论坛</a></p>
+</section>
+<section id="id9">
+<h2>贡献代码<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
+<p>如果您对  EK-RA8D1 感兴趣，并且有一些好玩的项目愿意与大家分享的话欢迎给我们贡献代码，您可以参考 <a class="reference external" href="https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/development-guide/github/github">如何向 RT-Thread 代码贡献</a>。</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../Titan_driver_gpt/README.html" class="btn btn-neutral float-left" title="RA8P1 Titan Board 开发板 GPT 使用说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Titan_driver_usb_hhid/README.html" class="btn btn-neutral float-right" title="瑞萨 EK-RA8D1 开发板 BSP 说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

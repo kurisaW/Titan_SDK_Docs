@@ -1,0 +1,186 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RA8P1 Titan Board ADC Application Example Usage Instructions &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">驱动示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RA8P1 Titan Board ADC Application Example Usage Instructions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/driver_examples/Titan_driver_adc/README_EN.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ra8p1-titan-board-adc-application-example-usage-instructions">
+<h1>RA8P1 Titan Board ADC Application Example Usage Instructions<a class="headerlink" href="#ra8p1-titan-board-adc-application-example-usage-instructions" title="Link to this heading"></a></h1>
+<p><strong>English</strong> | <a class="reference internal" href="README.html"><span class="std std-doc"><strong>Chinese</strong></span></a></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>This example demonstrates how to use the RT-Thread ADC framework on the Titan Board to collect analog signals via ADC and perform digital signal conversion. The main content includes the following:</p>
+</section>
+<section id="hardware-description">
+<h2>Hardware Description<a class="headerlink" href="#hardware-description" title="Link to this heading"></a></h2>
+<p><img alt="image-20250730141037247" src="../../_images/image-20250730141037247.png" /></p>
+<p>As shown in the above schematic diagram, there are four ADC channel interfaces left on the Titan Board that are connected to the channels 0, 1, 2, and 3 of the MCU adc0 respectively.</p>
+</section>
+<section id="fsp-configuration-instructions">
+<h2>FSP Configuration Instructions<a class="headerlink" href="#fsp-configuration-instructions" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Step 1: Open FSP and import the XML configuration file (or directly click the FSP link file in RT-Thread Studio).</p></li>
+<li><p>Step 2: Create a new <code class="docutils literal notranslate"><span class="pre">r_adc</span></code> stack, configure the ADC device, and select the channels to be used.</p></li>
+</ul>
+<p><img alt="image-20250730141414160" src="../../_images/image-20250730141414160.png" /></p>
+<p><img alt="image-20250730141457292" src="../../_images/image-20250730141457292.png" /></p>
+<p><img alt="image-20250730141534729" src="../../_images/image-20250730141534729.png" /></p>
+<ul class="simple">
+<li><p>Step 3: Save and click “Generate Project”. The generated code will be saved in <code class="docutils literal notranslate"><span class="pre">hal_data.c</span></code>.</p></li>
+</ul>
+</section>
+<section id="env-configuration">
+<h2>ENV Configuration<a class="headerlink" href="#env-configuration" title="Link to this heading"></a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">env</span></code> tool to enable ADC0 peripheral:</p>
+<p><img alt="image-20250730141626699" src="../../_images/image-20250730141626699.png" /></p>
+</section>
+<section id="example-code-description">
+<h2>Example Code Description<a class="headerlink" href="#example-code-description" title="Link to this heading"></a></h2>
+<p>The ADC source code is located in <code class="docutils literal notranslate"><span class="pre">/projects/Titan_driver_adc/src/hal_entry.c</span></code>. The macros used are defined as follows:</p>
+<p><img alt="image-20250730141816026" src="../../_images/image-20250730141816026.png" /></p>
+<p>The specific function is to sample the analog voltage from ADC0 channel 1 every 1000ms and perform a conversion. The code is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">adc_vol_sample</span><span class="p">()</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_adc_device_t</span><span class="w"> </span><span class="n">adc_dev</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rt_uint32_t</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">vol</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rt_err_t</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">adc_dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">rt_adc_device_t</span><span class="p">)</span><span class="n">rt_device_find</span><span class="p">(</span><span class="n">ADC_DEV_NAME</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">adc_dev</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;adc sample run failed! can&#39;t find %s device!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_DEV_NAME</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">RT_ERROR</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_adc_enable</span><span class="p">(</span><span class="n">adc_dev</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_DEV_CHANNEL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_adc_read</span><span class="p">(</span><span class="n">adc_dev</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_DEV_CHANNEL</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;the value is :%d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">value</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">vol</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">REFER_VOLTAGE</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">CONVERT_BITS</span><span class="p">;</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;the voltage is :%d.%02d </span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">vol</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">vol</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">100</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_adc_disable</span><span class="p">(</span><span class="n">adc_dev</span><span class="p">,</span><span class="w"> </span><span class="n">ADC_DEV_CHANNEL</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the example, the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop calls <code class="docutils literal notranslate"><span class="pre">adc_vol_sample</span></code> every 1000ms.</p>
+</section>
+<section id="compilation-download">
+<h2>Compilation &amp; Download<a class="headerlink" href="#compilation-download" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>RT-Thread Studio</strong>: In RT-Thread Studio’s package manager, download the Titan Board resource package, create a new project, and compile it.</p></li>
+</ul>
+<p>After compilation, connect the development board’s JLink interface to the PC and download the firmware to the development board.</p>
+</section>
+<section id="run-effect">
+<h2>Run Effect<a class="headerlink" href="#run-effect" title="Link to this heading"></a></h2>
+<p>The effect when using ADC0 channel 1 to sample a 1.8V voltage is shown below:</p>
+<p><img alt="PixPin_2025-07-25_15-13-18" src="../../_images/PixPin_2025-07-25_15-13-18.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

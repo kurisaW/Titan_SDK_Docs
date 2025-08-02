@@ -1,0 +1,244 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RA8P1 Titan Board WDT Usage Instructions &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">驱动示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RA8P1 Titan Board WDT Usage Instructions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/driver_examples/Titan_driver_wdt/README_EN.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ra8p1-titan-board-wdt-usage-instructions">
+<h1>RA8P1 Titan Board WDT Usage Instructions<a class="headerlink" href="#ra8p1-titan-board-wdt-usage-instructions" title="Link to this heading"></a></h1>
+<p><strong>English</strong> | <a class="reference internal" href="README.html"><span class="std std-doc"><strong>Chinese</strong></span></a></p>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading"></a></h2>
+<p>Watchdog devices can ensure that our code is in our expectations, can effectively prevent our program because of some other uncontrollable factors caused exceptions; This routine mainly describes how to use the window WDT device on the Titan Board;</p>
+</section>
+<section id="hardware-description">
+<h2>Hardware Description<a class="headerlink" href="#hardware-description" title="Link to this heading"></a></h2>
+<p>None</p>
+</section>
+<section id="fsp-configuration-instructions">
+<h2>FSP Configuration Instructions<a class="headerlink" href="#fsp-configuration-instructions" title="Link to this heading"></a></h2>
+<p>Open the FSP tool and create a new stack, selecting <code class="docutils literal notranslate"><span class="pre">r_wdt</span></code>.</p>
+<p><img alt="image-20250731092603474" src="../../_images/image-20250731092603474.png" /></p>
+<p><strong>Note:</strong> Using WDT requires the <code class="docutils literal notranslate"><span class="pre">OFS0</span></code> register configuration to be enabled.</p>
+<p><img alt="image-20250731092848714" src="../../_images/image-20250731092848714.png" /></p>
+</section>
+<section id="rt-thread-settings-configuration">
+<h2>RT-Thread Settings Configuration<a class="headerlink" href="#rt-thread-settings-configuration" title="Link to this heading"></a></h2>
+<p><img alt="image-20250731092657257" src="../../_images/image-20250731092657257.png" /></p>
+</section>
+<section id="example-project-description">
+<h2>Example project description<a class="headerlink" href="#example-project-description" title="Link to this heading"></a></h2>
+<p>The sample program is located at <code class="docutils literal notranslate"><span class="pre">projects/Titan_driver_wdt/src/hal_entry.c</span></code>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2006-2024, RT-Thread Development Team</span>
+<span class="cm"> *</span>
+<span class="cm"> * SPDX-License-Identifier: Apache-2.0</span>
+<span class="cm"> *</span>
+<span class="cm"> * Change Logs:</span>
+<span class="cm"> * Date           Author        Notes</span>
+<span class="cm"> * 2024-03-11     Wangyuqiang   first version</span>
+<span class="cm"> */</span>
+
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rtthread.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;hal_data.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rtdevice.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;board.h&gt;</span>
+
+<span class="cp">#define DBG_TAG &quot;wdt&quot;</span>
+<span class="cp">#define DBG_LVL DBG_LOG</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rtdbg.h&gt;</span>
+
+<span class="cp">#define WDT_DEVICE_NAME &quot;wdt&quot;    </span><span class="c1">// Default watchdog device name, depending on the BSP</span>
+<span class="cp">#define WDT_FEED_INTERVAL 1000   </span><span class="c1">// Feeding interval (unit: ms)</span>
+<span class="cp">#define WDT_TIMEOUT 3            </span><span class="c1">// Watchdog timeout period (unit: s)</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">rt_device_t</span><span class="w"> </span><span class="n">wdt_dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">rt_thread_t</span><span class="w"> </span><span class="n">feed_thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">;</span>
+
+<span class="cp">#define LED_PIN_0    BSP_IO_PORT_06_PIN_00 </span><span class="cm">/* Onboard LED pins */</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">hal_entry</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello RT-Thread!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;==================================================</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;This example project is an driver wdt routine!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;==================================================</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;Tips:&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;You can run wdt testcase by executing the instruction: </span><span class="se">\&#39;</span><span class="s">wdt_sample</span><span class="se">\&#39;</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_0</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_HIGH</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_0</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_LOW</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">feed_dog_entry</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">parameter</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">count</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">count</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">rt_device_control</span><span class="p">(</span><span class="n">wdt_dev</span><span class="p">,</span><span class="w"> </span><span class="n">RT_DEVICE_CTRL_WDT_KEEPALIVE</span><span class="p">,</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">);</span>
+<span class="w">            </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;[FeedDog] Feeding watchdog... %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">count</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;[FeedDog] Simulate exception! Stop feeding.&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="p">}</span>
+
+<span class="w">        </span><span class="n">count</span><span class="o">++</span><span class="p">;</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="n">WDT_FEED_INTERVAL</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">wdt_sample</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_err_t</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">wdt_dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_find</span><span class="p">(</span><span class="n">WDT_DEVICE_NAME</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">wdt_dev</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;Cannot find %s device!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WDT_DEVICE_NAME</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_control</span><span class="p">(</span><span class="n">wdt_dev</span><span class="p">,</span><span class="w"> </span><span class="n">RT_DEVICE_CTRL_WDT_START</span><span class="p">,</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;Start watchdog failed!&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;Watchdog started...&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">WDT_TIMEOUT</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">feed_thread</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_thread_create</span><span class="p">(</span><span class="s">&quot;feed_dog&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">feed_dog_entry</span><span class="p">,</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">1024</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">feed_thread</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">)</span>
+<span class="w">        </span><span class="n">rt_thread_startup</span><span class="p">(</span><span class="n">feed_thread</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">MSH_CMD_EXPORT</span><span class="p">(</span><span class="n">wdt_sample</span><span class="p">,</span><span class="w"> </span><span class="n">wdt_sample</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="compilation-download">
+<h2>Compilation &amp; Download<a class="headerlink" href="#compilation-download" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>RT-Thread Studio</strong>: Download the Titan Board resource package in the RT-Thread Studio package manager, then create a new project and compile it.</p></li>
+</ul>
+<p>After compilation, connect the Jlink interface of the development board to the PC, and download the firmware to the development board.</p>
+</section>
+<section id="run-effects">
+<h2>Run Effects<a class="headerlink" href="#run-effects" title="Link to this heading"></a></h2>
+<p>Enter the <code class="docutils literal notranslate"><span class="pre">wdt_sample</span></code> command at the terminal to run the WDT test program. After feeding the dog 10 times, stop feeding the dog to simulate an abnormal program situation.</p>
+<p><img alt="PixPin_2025-07-28_10-11-00" src="../../_images/PixPin_2025-07-28_10-11-00.png" /></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading"></a></h2>
+<p>Device and Driver: <a class="reference external" href="https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/programming-manual/device/watchdog/watchdog">WDT Device</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

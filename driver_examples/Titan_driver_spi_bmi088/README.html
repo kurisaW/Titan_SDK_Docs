@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RA8P1 Titan Board BMI088 陀螺仪使用说明 &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="瑞萨 EK-RA8D1 开发板 BSP 说明" href="../Titan_driver_usb_pcdc/README.html" />
+    <link rel="prev" title="RA8P1 Titan Board 开发板 IST8310 示例说明" href="../Titan_driver_iic_ist8310/README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">驱动示例</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_iic_ist8310/README.html">RA8P1 Titan Board 开发板  IST8310 示例说明</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RA8P1 Titan Board BMI088 陀螺仪使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">硬件说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fsp">FSP配置说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rt-thread-settings">RT-Thread Settings配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">示例工程介绍</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">编译&amp;下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">运行效果</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_usb_pcdc/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_rtc/README.html">RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_gpt/README.html">RA8P1 Titan Board 开发板 GPT 使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_hyperram/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_usb_hhid/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_rgb_lcd/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_wifi/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_sdcard/README.html">RA8P1 Titan Board SD卡文件系统使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_adc/README.html">RA8P1 Titan Board ADC应用示例说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_wdt/README.html">RA8P1 Titan Board WDT 使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">驱动示例</a></li>
+      <li class="breadcrumb-item active">RA8P1 Titan Board BMI088 陀螺仪使用说明</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/driver_examples/Titan_driver_spi_bmi088/README.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ra8p1-titan-board-bmi088">
+<h1>RA8P1 Titan Board BMI088 陀螺仪使用说明<a class="headerlink" href="#ra8p1-titan-board-bmi088" title="Link to this heading"></a></h1>
+<p><strong>中文</strong> | <a class="reference internal" href="README_EN.html"><span class="std std-doc"><strong>English</strong></span></a></p>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>本例程主要介绍了如何在 Titan Board 上使用 RT-Thread 的 SPI 框架与 BMI088 陀螺仪通信。</p>
+</section>
+<section id="id2">
+<h2>硬件说明<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>Titan Board 使用 SPI0 与 BMI088 陀螺仪通信。</p>
+<p><img alt="image-20250731090541599" src="../../_images/image-20250731090541599.png" /></p>
+</section>
+<section id="fsp">
+<h2>FSP配置说明<a class="headerlink" href="#fsp" title="Link to this heading"></a></h2>
+<p>打开 FSP 工具，新建 Stacks 并选择 r_spi_b：</p>
+<p><img alt="image-20250730160421315" src="../../_images/image-20250730160421315.png" /></p>
+<p>配置 SPI0 引脚：</p>
+<p><img alt="image-20250730160615804" src="../../_images/image-20250730160615804.png" /></p>
+</section>
+<section id="rt-thread-settings">
+<h2>RT-Thread Settings配置<a class="headerlink" href="#rt-thread-settings" title="Link to this heading"></a></h2>
+<p>打开 RT-Thread Settings 开启 SPI0 与 BMI088 软件包：</p>
+<p><img alt="image-20250730160802572" src="../../_images/image-20250730160802572.png" /></p>
+</section>
+<section id="id3">
+<h2>示例工程介绍<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>BMI088 驱动示例程序位于 <code class="docutils literal notranslate"><span class="pre">./packages/bmi088-latest/samples/bmi088_sample</span></code>：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm"> * Copyright (c) 2006-2020, RT-Thread Development Team</span>
+<span class="cm"> *</span>
+<span class="cm"> * SPDX-License-Identifier: Apache-2.0</span>
+<span class="cm"> *</span>
+<span class="cm"> * Change Logs:</span>
+<span class="cm"> * Date           Author      Notes</span>
+<span class="cm"> * 2020-03-10     MyGuo       the first version</span>
+<span class="cm"> */</span>
+<span class="w"> </span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rtthread.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;rtdbg.h&gt;</span><span class="c1"> </span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;bmi088.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;sensor_intf_bmi088.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;drv_spi.h&quot;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;bmi088_sample.h&quot;</span>
+
+<span class="cp">#define BMI088_BUS_NAME &quot;spi0&quot;</span>
+<span class="cp">#define BMI088A_SPI_NAME &quot;spi00&quot;</span>
+<span class="cp">#define BMI088G_SPI_NAME &quot;spi01&quot;</span>
+
+<span class="k">static</span><span class="w"> </span><span class="n">rt_device_t</span><span class="w"> </span><span class="n">acce_device_t</span><span class="p">;</span>
+<span class="k">static</span><span class="w"> </span><span class="n">rt_device_t</span><span class="w"> </span><span class="n">gyro_device_t</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">rt_sensor_data</span><span class="w"> </span><span class="n">acc_test</span><span class="p">;</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">rt_sensor_data</span><span class="w"> </span><span class="n">gyr_test</span><span class="p">;</span>
+
+<span class="cp">#define BMI088A_PIN     BSP_IO_PORT_12_PIN_10</span>
+<span class="cp">#define BMI088G_PIN     BSP_IO_PORT_12_PIN_14</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">imu_thread_entry</span><span class="p">(</span><span class="kt">void</span><span class="o">*</span><span class="w"> </span><span class="n">parameter</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// 配置spi,配置片选引脚(要在acc、gyr初始化之前配置,因为器件初始化中涉及到引脚操作)</span>
+<span class="w">    </span><span class="n">rt_hw_spi_device_attach</span><span class="p">(</span><span class="n">BMI088_BUS_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">BMI088A_SPI_NAME</span><span class="p">,</span><span class="w"> </span><span class="mh">0x060C</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_hw_spi_device_attach</span><span class="p">(</span><span class="n">BMI088_BUS_NAME</span><span class="p">,</span><span class="w"> </span><span class="n">BMI088G_SPI_NAME</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0704</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// 注册传感器</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">rt_sensor_config</span><span class="w"> </span><span class="n">acc_cfg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">rt_sensor_config</span><span class="w"> </span><span class="n">gyr_cfg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">acc_cfg</span><span class="p">.</span><span class="n">intf</span><span class="p">.</span><span class="n">dev_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BMI088A_SPI_NAME</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gyr_cfg</span><span class="p">.</span><span class="n">intf</span><span class="p">.</span><span class="n">dev_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BMI088G_SPI_NAME</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">rt_hw_bmi088_init</span><span class="p">(</span><span class="s">&quot;bmi&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">acc_cfg</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gyr_cfg</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">acce_device_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_find</span><span class="p">(</span><span class="s">&quot;acce_bmi&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">acce_device_t</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;Can&#39;t find acce device</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span><span class="w"> </span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_device_open</span><span class="p">(</span><span class="n">acce_device_t</span><span class="p">,</span><span class="w"> </span><span class="n">RT_DEVICE_OFLAG_RDWR</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="n">gyro_device_t</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_find</span><span class="p">(</span><span class="s">&quot;gyro_bmi&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">gyro_device_t</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;Can&#39;t find gyro device</span><span class="se">\r\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_device_open</span><span class="p">(</span><span class="n">gyro_device_t</span><span class="p">,</span><span class="w"> </span><span class="n">RT_DEVICE_OFLAG_RDWR</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">_bmi088_get_data</span><span class="p">((</span><span class="n">rt_sensor_t</span><span class="p">)</span><span class="w"> </span><span class="n">acce_device_t</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">acc_test</span><span class="p">);</span>
+<span class="w">        </span><span class="n">_bmi088_get_data</span><span class="p">((</span><span class="n">rt_sensor_t</span><span class="p">)</span><span class="w"> </span><span class="n">gyro_device_t</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">gyr_test</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;acce value:[X]:%d [Y]:%d [Z]:%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">acc_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">acce</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">acc_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">acce</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">acc_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">acce</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;gyro value:[X]:%d [Y]:%d [Z]:%d</span><span class="se">\n\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">gyr_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">gyro</span><span class="p">.</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">gyr_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">gyro</span><span class="p">.</span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">gyr_test</span><span class="p">.</span><span class="n">data</span><span class="p">.</span><span class="n">gyro</span><span class="p">.</span><span class="n">z</span><span class="p">);</span>
+
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">bmi088_app</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_thread_t</span><span class="w"> </span><span class="n">bmi088</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_thread_create</span><span class="p">(</span><span class="s">&quot;bmi088&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">imu_thread_entry</span><span class="p">,</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">2048</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">bmi088</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_thread_startup</span><span class="p">(</span><span class="n">bmi088</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">return</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">MSH_CMD_EXPORT</span><span class="p">(</span><span class="n">bmi088_app</span><span class="p">,</span><span class="w"> </span><span class="n">bmi088_app</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>编译&amp;下载<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>RT-Thread Studio：在RT-Thread Studio 的包管理器中下载 Titan Board 资源包，然后创建新工程，执行编译。</p></li>
+</ul>
+<p>编译完成后，将开发板的 Jlink 接口与 PC 机连接，然后将固件下载至开发板。</p>
+</section>
+<section id="id5">
+<h2>运行效果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>打开串口工具，在终端里输入 bmi088_app 指令获取陀螺仪数据：</p>
+<p><img alt="PixPin_2025-07-28_10-09-31" src="../../_images/PixPin_2025-07-28_10-09-31.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../Titan_driver_iic_ist8310/README.html" class="btn btn-neutral float-left" title="RA8P1 Titan Board 开发板 IST8310 示例说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Titan_driver_usb_pcdc/README.html" class="btn btn-neutral float-right" title="瑞萨 EK-RA8D1 开发板 BSP 说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

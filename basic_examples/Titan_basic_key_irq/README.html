@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RA8P1 Titan Board 按键中断使用说明 &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="RA8P1 Titan Board 开发板 RGB 使用说明" href="../Titan_basic_blink_led/README.html" />
+    <link rel="prev" title="基础功能示例" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">基础功能示例</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RA8P1 Titan Board 按键中断使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">硬件说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fsp">FSP配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">示例代码说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">编译&amp;下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">运行效果</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_basic_blink_led/README.html">RA8P1 Titan Board 开发板 RGB 使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_basic_buzzer/README.html">RA8P1 Titan Board 开发板 GPT 使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../driver_examples/index.html">驱动示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">基础功能示例</a></li>
+      <li class="breadcrumb-item active">RA8P1 Titan Board 按键中断使用说明</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/basic_examples/Titan_basic_key_irq/README.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ra8p1-titan-board">
+<h1>RA8P1 Titan Board 按键中断使用说明<a class="headerlink" href="#ra8p1-titan-board" title="Link to this heading"></a></h1>
+<p><strong>中文</strong> | <a class="reference internal" href="README_EN.html"><span class="std std-doc"><strong>English</strong></span></a></p>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>本例程主要功能是通过板载的按键 KEY 实现外部中断，当 USER_KEY 被按下时，改变 LED_G(Green) 的亮灭状态。</p>
+</section>
+<section id="id2">
+<h2>硬件说明<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p><img alt="image-20250728111910040" src="../../_images/image-20250728111910040.png" /></p>
+<p><img alt="image-20250728112127243" src="../../_images/image-20250728112127243.png" /></p>
+<p>如上图所示， USER_KEY 引脚连接单片机 P110 引脚, KEY 按键按下为低电平，松开为高电平。</p>
+<p>KEY 在开发板中的位置如下图所示：</p>
+<p><img alt="image-20250728112807624" src="../../_images/image-20250728112807624.png" /></p>
+</section>
+<section id="fsp">
+<h2>FSP配置<a class="headerlink" href="#fsp" title="Link to this heading"></a></h2>
+<p>首先下载官方FSP代码生成工具：</p>
+<ul class="simple">
+<li><p>https://github.com/renesas/fsp/releases/download/v6.0.0/setup_fsp_v6_0_0_rasc_v2025-04.1.exe</p></li>
+</ul>
+<p>安装成功之后我们双击 eclipse 目录下的 <code class="docutils literal notranslate"><span class="pre">rasc.exe</span></code>，并打开 <code class="docutils literal notranslate"><span class="pre">Titan_basic_key_irq</span></code> 工程目录下的配置文件 <code class="docutils literal notranslate"><span class="pre">configuration.xml</span></code>：</p>
+<p>下面我们新增两个Stack：New Stack-&gt;Input-&gt;External IRQ(r_icu)：</p>
+<p><img alt="image-20250728115209730" src="../../_images/image-20250728115209730.png" /></p>
+<p>接着我们需要在引脚配置那开启IRQ功能，根据下图选中我们要使能的中断引脚：USER_KEY(IRQ20)：</p>
+<p><img alt="image-20250728115408487" src="../../_images/image-20250728115408487.png" /></p>
+<p>回到Stacks界面，设置 IRQ20，配置对应的中断名称、通道号以及中断回调函数：</p>
+<p><img alt="image-20250728115641528" src="../../_images/image-20250728115641528.png" /></p>
+</section>
+<section id="id3">
+<h2>示例代码说明<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>本例程的源码位于<code class="docutils literal notranslate"><span class="pre">/projects/Titan_basic_key_irq</span></code>。</p>
+<p>USER_KEY 对应的单片机引脚定义如下:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* 配置 key irq 引脚 */</span>
+<span class="cp">#define KEY_PIN     BSP_IO_PORT_01_PIN_10 </span><span class="cm">/* Onboard KEY pins */</span>
+</pre></div>
+</div>
+<p>LED灯的单片机引脚定义如下:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* 配置 LED 灯引脚 */</span>
+<span class="cp">#define LED_PIN_B   BSP_IO_PORT_00_PIN_12 </span><span class="cm">/* Onboard LED pins */</span>
+<span class="cp">#define LED_PIN_G   BSP_IO_PORT_06_PIN_13 </span><span class="cm">/* Onboard LED pins */</span>
+</pre></div>
+</div>
+<p>按键中断的源代码位于<code class="docutils literal notranslate"><span class="pre">/projects/Titan_basic_key_irq/src/hal_entry.c</span></code>中，当按下 USER_KEY 按键，会改变绿色 LED 的亮灭状态。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define LED_PIN_B   BSP_IO_PORT_00_PIN_12 </span><span class="cm">/* Onboard LED pins */</span>
+<span class="cp">#define LED_PIN_G   BSP_IO_PORT_06_PIN_13 </span><span class="cm">/* Onboard LED pins */</span>
+<span class="cp">#define KEY_PIN     BSP_IO_PORT_01_PIN_10 </span><span class="cm">/* Onboard KEY pins */</span>
+
+<span class="k">volatile</span><span class="w"> </span><span class="n">rt_bool_t</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">key_callback</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_G</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_G</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_LOW</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">RT_FALSE</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">RT_TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">hal_entry</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello RT-Thread!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;==================================================</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;This example project is a key routine!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;==================================================</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;Tips:&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;You can press the button to run the test case for button interruption.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;Use the buttons to control the on/off state of the green LED.&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">rt_pin_mode</span><span class="p">(</span><span class="n">KEY_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_MODE_INPUT_PULLUP</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_pin_attach_irq</span><span class="p">(</span><span class="n">KEY_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_IRQ_MODE_FALLING</span><span class="p">,</span><span class="w"> </span><span class="n">key_callback</span><span class="p">,</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_pin_irq_enable</span><span class="p">(</span><span class="n">KEY_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_IRQ_ENABLE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_B</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_HIGH</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_B</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_LOW</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>编译&amp;下载<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>RT-Thread Studio：在RT-Thread Studio 的包管理器中下载 <strong>Titan Board</strong> 资源包，然后创建新工程，执行编译。</p></li>
+</ul>
+<p>编译完成后，将开发板的 Jlink 接口与 PC 机连接，然后将固件下载至开发板。</p>
+</section>
+<section id="id5">
+<h2>运行效果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>按下复位按键重启开发板，初始状态下的 LED_G 处于灭灯状态，当按下 USER_KEY 时，LED_G(Green) 的亮灭状态会改变。</p>
+<p><img alt="image-20250728114755783" src="../../_images/image-20250728114755783.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../index.html" class="btn btn-neutral float-left" title="基础功能示例" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Titan_basic_blink_led/README.html" class="btn btn-neutral float-right" title="RA8P1 Titan Board 开发板 RGB 使用说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

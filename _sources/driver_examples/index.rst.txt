@@ -7,17 +7,17 @@
    :maxdepth: 2
    :caption: 驱动示例
 
-   driver_iic_ist8310
-   driver_spi_bmi088
-   driver_usb_pcdc
-   driver_rtc
-   driver_gpt
-   driver_hyperram
-   driver_usb_hhid
-   driver_rgb_lcd
-   driver_wifi
-   driver_sdcard
-   driver_adc
-   driver_wdt
+   Titan_driver_iic_ist8310/README
+   Titan_driver_spi_bmi088/README
+   Titan_driver_usb_pcdc/README
+   Titan_driver_rtc/README
+   Titan_driver_gpt/README
+   Titan_driver_hyperram/README
+   Titan_driver_usb_hhid/README
+   Titan_driver_rgb_lcd/README
+   Titan_driver_wifi/README
+   Titan_driver_sdcard/README
+   Titan_driver_adc/README
+   Titan_driver_wdt/README
 
 这些示例展示了 Titan SDK 的 驱动示例。

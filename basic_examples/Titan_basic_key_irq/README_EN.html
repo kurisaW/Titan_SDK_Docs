@@ -1,0 +1,203 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RA8P1 Titan Board Button Interrupt Usage Instructions &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">基础功能示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../driver_examples/index.html">驱动示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">RA8P1 Titan Board Button Interrupt Usage Instructions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/basic_examples/Titan_basic_key_irq/README_EN.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ra8p1-titan-board-button-interrupt-usage-instructions">
+<h1>RA8P1 Titan Board Button Interrupt Usage Instructions<a class="headerlink" href="#ra8p1-titan-board-button-interrupt-usage-instructions" title="Link to this heading"></a></h1>
+<p><strong>English</strong> | <a class="reference internal" href="README.html"><span class="std std-doc"><strong>Chinese</strong></span></a></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>The main function of this routine is to realize the external interrupt through the KEY on the board. When USER_KEY is pressed, the state of LED_G(Green) is changed.</p>
+</section>
+<section id="hardware-description">
+<h2>Hardware Description<a class="headerlink" href="#hardware-description" title="Link to this heading"></a></h2>
+<p><img alt="image-20250728111910040" src="../../_images/image-20250728111910040.png" /></p>
+<p><img alt="image-20250728112127243" src="../../_images/image-20250728112127243.png" /></p>
+<p>As shown in the figure above, the USER_KEY pin is connected to the P110 pin of the microcontroller, and the KEY button is pressed for low level and released for high level.</p>
+<p>The position of the KEY in the development board is shown as follows:</p>
+<p><img alt="image-20250728112807624" src="../../_images/image-20250728112807624.png" /></p>
+</section>
+<section id="fsp-configuration">
+<h2>FSP Configuration<a class="headerlink" href="#fsp-configuration" title="Link to this heading"></a></h2>
+<p>First, download the official FSP code generation tool:</p>
+<ul class="simple">
+<li><p>https://github.com/renesas/fsp/releases/download/v6.0.0/setup_fsp_v6_0_0_rasc_v2025-04.1.exe</p></li>
+</ul>
+<p>Once installed, double-click on the <code class="docutils literal notranslate"><span class="pre">rasc.exe</span></code> in eclipse and open the configuration file <code class="docutils literal notranslate"><span class="pre">configuration.xml</span></code> in the <code class="docutils literal notranslate"><span class="pre">Titan_basic_key_irq</span></code> project directory:</p>
+<p>Let’s add two stacks: New Stack-&gt;Input-&gt;External IRQ(r_icu)：</p>
+<p><img alt="image-20250728115209730" src="../../_images/image-20250728115209730.png" /></p>
+<p>Next we need to enable the IRQ feature in the pin config. Select the interrupt pin we want to enable as shown in the following screenshot: USER_KEY(IRQ20) :</p>
+<p><img alt="image-20250728115408487" src="../../_images/image-20250728115408487.png" /></p>
+<p>Back in the Stacks interface, set IRQ20, and configure the interrupt name, channel number, and interrupt callback function:</p>
+<p><img alt="image-20250728115641528" src="../../_images/image-20250728115641528.png" /></p>
+</section>
+<section id="example-code-description">
+<h2>Example Code Description<a class="headerlink" href="#example-code-description" title="Link to this heading"></a></h2>
+<p>The source code for this routine is located at <code class="docutils literal notranslate"><span class="pre">/projects/Titan_basic_key_irq</span></code>.</p>
+<p>The microcontroller pin corresponding to USER_KEY is defined as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Configure key IRQ pins */</span>
+<span class="cp">#define KEY_PIN     BSP_IO_PORT_01_PIN_10 </span><span class="cm">/* Onboard KEY pins */</span>
+</pre></div>
+</div>
+<p>LED灯的单片机引脚定义如下:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* Configure LED pins */</span>
+<span class="cp">#define LED_PIN_B   BSP_IO_PORT_00_PIN_12 </span><span class="cm">/* Onboard LED pins */</span>
+<span class="cp">#define LED_PIN_G   BSP_IO_PORT_06_PIN_13 </span><span class="cm">/* Onboard LED pins */</span>
+</pre></div>
+</div>
+<p>The source code for the keypress interrupt is located at <code class="docutils literal notranslate"><span class="pre">/projects/Titan_basic_key_irq/src/hal_entry.c</span></code>. When the USER_KEY key is pressed, the green LED is turned on and off.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define LED_PIN_B   BSP_IO_PORT_00_PIN_12 </span><span class="cm">/* Onboard LED pins */</span>
+<span class="cp">#define LED_PIN_G   BSP_IO_PORT_06_PIN_13 </span><span class="cm">/* Onboard LED pins */</span>
+<span class="cp">#define KEY_PIN     BSP_IO_PORT_01_PIN_10 </span><span class="cm">/* Onboard KEY pins */</span>
+
+<span class="k">volatile</span><span class="w"> </span><span class="n">rt_bool_t</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">key_callback</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">flag</span><span class="p">)</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_G</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_HIGH</span><span class="p">);</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_G</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_LOW</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">flag</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">RT_FALSE</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">RT_TRUE</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">hal_entry</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello RT-Thread!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;==================================================</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;This example project is a key routine!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;==================================================</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;Tips:&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;You can press the button to run the test case for button interruption.&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;Use the buttons to control the on/off state of the green LED.&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">rt_pin_mode</span><span class="p">(</span><span class="n">KEY_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_MODE_INPUT_PULLUP</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_pin_attach_irq</span><span class="p">(</span><span class="n">KEY_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_IRQ_MODE_FALLING</span><span class="p">,</span><span class="w"> </span><span class="n">key_callback</span><span class="p">,</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_pin_irq_enable</span><span class="p">(</span><span class="n">KEY_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_IRQ_ENABLE</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_B</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_HIGH</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN_B</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_LOW</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="compilation-download">
+<h2>Compilation &amp; Download<a class="headerlink" href="#compilation-download" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>RT-Thread Studio</strong>: In RT-Thread Studio’s package manager, download the <strong>Titan Board</strong> resource package, create a new project, and compile it.</p></li>
+</ul>
+<p>After compiling, connect the development board’s JLink interface to the PC and download the firmware to the development board.</p>
+</section>
+<section id="run-effect">
+<h2>Run Effect<a class="headerlink" href="#run-effect" title="Link to this heading"></a></h2>
+<p>Press the reset button to restart the development board. LED_G in the initial state is in the light off state. When the USER_KEY is pressed, the light off state of LED_G(Green) will change.</p>
+<p><img alt="image-20250728114755783" src="../../_images/image-20250728114755783.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

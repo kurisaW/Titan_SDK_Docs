@@ -1,0 +1,285 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EK-RA8D1 BSP Instruction &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">驱动示例</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">EK-RA8D1 BSP Instruction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/driver_examples/Titan_driver_hyperram/README_EN.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ek-ra8d1-bsp-instruction">
+<h1>EK-RA8D1 BSP Instruction<a class="headerlink" href="#ek-ra8d1-bsp-instruction" title="Link to this heading"></a></h1>
+<p>中文|<a class="reference internal" href="README.html"><span class="std std-doc">English</span></a></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h2>
+<p>Prepare for an exhilarating journey into the realm of the EK-RA8D1 development board! This guide is your treasure map, leading you to a trove of knowledge about the Board Support Package (BSP). The Quick Start section is your launchpad, propelling developers into action with the BSP, and getting RT-Thread operational on the development board faster than a speeding bullet.</p>
+<p>Here’s a sneak peek of the adventure that awaits:</p>
+<p>• A captivating exploration of the development board</p>
+<p>• A practical and user-friendly BSP Quick Start Guide</p>
+</section>
+<section id="hardware">
+<h2>Hardware<a class="headerlink" href="#hardware" title="Link to this heading"></a></h2>
+<p>The EK-RA8D1 evaluation board, developed based on the Renesas RA8D1 MCU, is a handy tool that allows users to easily evaluate the features of the RA8 MCU group. With flexible software package and IDE configurations, it’s a breeze to develop embedded system applications.</p>
+<p>Here’s a sneak peek of what the front of the development board looks like:</p>
+<p><img alt="" src="driver_examples/Titan_driver_hyperram/docs/picture/front.png" /></p>
+<p>The board comes with some commonly used <strong>on-board resources</strong>. Let’s dive in and explore!</p>
+<ul class="simple">
+<li><p>MCU：R7FA8D1BH, 480MHz, <strong>Arm®Cortex®-M85</strong>, 2MB Flash, 1MB SRAM</p></li>
+<li><p>Jlink OB</p></li>
+<li><p>OSPI FLASH（64MX8）</p></li>
+<li><p>USB-Host</p></li>
+<li><p>USB-Device</p></li>
+<li><p>CANFD</p></li>
+<li><p>ethernet</p></li>
+<li><p>2个PMOD+Arduino+micro BUS interface</p></li>
+<li><p>3 user LED</p></li>
+<li><p>3 button: 2 user button, 1 reset button</p></li>
+</ul>
+<p><strong>More Details</strong></p>
+<section id="peripheral-condition">
+<h3>Peripheral Condition<a class="headerlink" href="#peripheral-condition" title="Link to this heading"></a></h3>
+<p>Each peripheral supporting condition for this BSP is as follows:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p><strong>On-chip Peripheral Drivers</strong></p></th>
+<th class="head text-center"><p><strong>Support</strong></p></th>
+<th class="head text-left"><p><strong>Remark</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>UART</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p>UART9 is the default log output port.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>GPIO</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>USB</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p>TinyUSB</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>Camera</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p>ov2640、ov7725、ov7670…</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>SDHC</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p>1bit、4bit</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>ADC</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>DAC</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>SPI</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>PWM</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>RTC</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>FLASH</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p>On board flash</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>WDT</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>IIC</p></td>
+<td class="text-center"><p>Support</p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="instructions-for-use">
+<h2>Instructions for Use<a class="headerlink" href="#instructions-for-use" title="Link to this heading"></a></h2>
+<p>The instructions for use are divided into the following two sections:</p>
+<p>• Quick Start</p>
+<p>This section is a user guide for newcomers to RT-Thread. By following simple steps, you can run the RT-Thread operating system on this development board and see the experimental results.</p>
+<p>• Advanced Use</p>
+<p>This section is for developers who want to enable more development board resources on the RT-Thread operating system. By using the ENV tool to configure the BSP, you can enable more on-board resources and achieve more advanced functions.</p>
+<section id="quick-start">
+<h3>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h3>
+<p>This BSP currently only provides an MDK5 project. The following tutorial takes the MDK5 development environment as an example to introduce how to run the system.</p>
+<p><strong>Compile and Download</strong></p>
+<p>• Compile: Double-click the <strong>project.uvprojx</strong> file to open the MDK5 project and compile the program.</p>
+<p>• Download: Click the Debug button in MDK to download and debug</p>
+<p><strong>Running results</strong></p>
+<p>After the program is downloaded successfully, the system will automatically run and print system information.</p>
+<p>Connect the corresponding serial port of the development board to the PC, open the corresponding serial port (115200-8-1-N) in the terminal tool, reset the device, and you can see RT-Thread’s output information. Enter the help command can view the commands supported by the system.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>initialize<span class="w"> </span>rti_board_start:0<span class="w"> </span><span class="k">done</span>
+
+<span class="w"> </span><span class="se">\ </span><span class="p">|</span><span class="w"> </span>/
+-<span class="w"> </span>RT<span class="w"> </span>-<span class="w">     </span>Thread<span class="w"> </span>Operating<span class="w"> </span>System
+<span class="w"> </span>/<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\ </span><span class="w">    </span><span class="m">5</span>.1.0<span class="w"> </span>build<span class="w"> </span>Oct<span class="w"> </span><span class="m">30</span><span class="w"> </span><span class="m">2023</span><span class="w"> </span><span class="m">16</span>:14:05
+<span class="w"> </span><span class="m">2006</span><span class="w"> </span>-<span class="w"> </span><span class="m">2022</span><span class="w"> </span>Copyright<span class="w"> </span>by<span class="w"> </span>RT-Thread<span class="w"> </span>team
+<span class="k">do</span><span class="w"> </span>components<span class="w"> </span>initialization.
+initialize<span class="w"> </span>rti_board_end:0<span class="w"> </span><span class="k">done</span>
+initialize<span class="w"> </span>finsh_system_init:0<span class="w"> </span><span class="k">done</span>
+
+Hello<span class="w"> </span>RT-Thread!
+msh<span class="w"> </span>&gt;
+</pre></div>
+</div>
+<p><strong>Entry function</strong></p>
+<p>The entry function of the application layer is in <strong>bsp\renesas\ra8d1-ek\src\hal_entry.c</strong> in <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">hal_entry(void)</span></code>. Source files that you created can be placed directly in the src directory.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">hal_entry</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">Hello RT-Thread!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_HIGH</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_pin_write</span><span class="p">(</span><span class="n">LED_PIN</span><span class="p">,</span><span class="w"> </span><span class="n">PIN_LOW</span><span class="p">);</span>
+<span class="w">        </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="advanced-features">
+<h3>Advanced Features<a class="headerlink" href="#advanced-features" title="Link to this heading"></a></h3>
+<p><strong>Resources &amp; Documents</strong></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.renesas.com/us/en/products/microcontrollers-microprocessors/ra-cortex-m-mcus/ek-ra8d1-evaluation-kit-ra8d1-mcu-group#documents">Development Board Overview</a></p></li>
+<li><p><a class="reference external" href="https://www.renesas.com/us/en/document/mat/ek-ra8d1-v1-users-manual?r=25452351">User Guide</a></p></li>
+<li><p><a class="reference external" href="https://www.renesas.com/us/en/document/gde/1520091">RA MCU</a></p></li>
+</ul>
+<p><strong>ENV Configuration</strong></p>
+<p>• How to use the ENV tool: <a class="reference external" href="https://www.rt-thread.io/document/site/programming-manual/env/env/">RT-Thread env tool user manual</a>.</p>
+<p>This BSP only enables the function of UART9 by default. If you’re looking for more advanced functions such as components and software packages, ENV tool for configuration is available.</p>
+<p>The steps are as follows:</p>
+<ol class="arabic simple">
+<li><p>Open the env tool under bsp.</p></li>
+<li><p>Enter the <code class="docutils literal notranslate"><span class="pre">menuconfig</span></code> command to configure the project, and save and exit after configuration.</p></li>
+<li><p>Enter the <code class="docutils literal notranslate"><span class="pre">pkgs</span> <span class="pre">--update</span></code> command to update the software package.</p></li>
+<li><p>Enter the <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--target=mdk5</span></code> command to regenerate the project.</p></li>
+</ol>
+<p><strong>FSP Configuration</strong></p>
+<ul class="simple">
+<li><p>How to Use FSP: <a class="reference external" href="https://www.rt-thread.org/document/site/#/rt-thread-version/rt-thread-standard/tutorial/make-bsp/renesas-ra/RA%E7%B3%BB%E5%88%97%E4%BD%BF%E7%94%A8FSP%E9%85%8D%E7%BD%AE%E5%A4%96%E8%AE%BE%E9%A9%B1%E5%8A%A8?id=ra%E7%B3%BB%E5%88%97%E4%BD%BF%E7%94%A8-fsp-%E9%85%8D%E7%BD%AE%E5%A4%96%E8%AE%BE%E9%A9%B1%E5%8A%A8">Configuring Peripheral Drivers for RA Series Using FSP</a></p></li>
+</ul>
+<p>The current repository’s BSP is configured with the minimum footprint enabled by default. Users can enable peripheral configurations through the following steps:</p>
+<ol class="arabic simple">
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">env</span></code> tool in the BSP directory and use the <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--target=mdk5</span></code> command to generate an MDK project.</p></li>
+<li><p>Open the <code class="docutils literal notranslate"><span class="pre">project.uvprojx</span></code> file in the BSP directory, select the <code class="docutils literal notranslate"><span class="pre">Software</span> <span class="pre">Components</span></code> configuration in the top navigation bar, and open the configuration button next to <code class="docutils literal notranslate"><span class="pre">RA</span> <span class="pre">Configuration</span></code> under <code class="docutils literal notranslate"><span class="pre">Flex</span> <span class="pre">Software</span></code>. This operation will automatically detect the installed FSP version on the current computer. After selecting the specified version, enter FSP.
+<img alt="" src="driver_examples/docs/figures/mdk_rasc.png" /></p></li>
+<li><p>Upon entering FSP, pre-configured peripherals are already present. Click the <code class="docutils literal notranslate"><span class="pre">Generate</span> <span class="pre">Project</span> <span class="pre">Content</span></code> button to generate the required driver files.
+<img alt="" src="driver_examples/docs/figures/fsp_configure.png" /></p></li>
+<li><p>Return to <code class="docutils literal notranslate"><span class="pre">env</span></code>, enable the necessary peripheral configurations, save, and exit.</p></li>
+</ol>
+</section>
+</section>
+<section id="contribute-the-code">
+<h2>Contribute the Code<a class="headerlink" href="#contribute-the-code" title="Link to this heading"></a></h2>
+<p>If you’re interested in the EK-RA8D1 and have some cool projects you’d like to share with everyone, we’d love for you to contribute your code! You can check out <a class="reference external" href="https://www.rt-thread.io/contribution.html">how to contribute to RT-Thread’s code</a>. Let’s make something awesome together!</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,275 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明 &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="RA8P1 Titan Board 开发板 GPT 使用说明" href="../Titan_driver_gpt/README.html" />
+    <link rel="prev" title="瑞萨 EK-RA8D1 开发板 BSP 说明" href="../Titan_driver_usb_pcdc/README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">驱动示例</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_iic_ist8310/README.html">RA8P1 Titan Board 开发板  IST8310 示例说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_spi_bmi088/README.html">RA8P1 Titan Board BMI088 陀螺仪使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_usb_pcdc/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">硬件说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fsp">FSP配置说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rt-thread-settings">RT-Thread Settings配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">示例代码说明</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">编译&amp;下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">运行效果</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_gpt/README.html">RA8P1 Titan Board 开发板 GPT 使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_hyperram/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_usb_hhid/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_rgb_lcd/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_wifi/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_sdcard/README.html">RA8P1 Titan Board SD卡文件系统使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_adc/README.html">RA8P1 Titan Board ADC应用示例说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_wdt/README.html">RA8P1 Titan Board WDT 使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">驱动示例</a></li>
+      <li class="breadcrumb-item active">RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/driver_examples/Titan_driver_rtc/README.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ra8p1-titan-board-rtc-alarm">
+<h1>RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明<a class="headerlink" href="#ra8p1-titan-board-rtc-alarm" title="Link to this heading"></a></h1>
+<p><strong>中文</strong>|<a class="reference internal" href="README_EN.html"><span class="std std-doc"><strong>English</strong></span></a></p>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>本例程主要介绍了如何在 Titan Board 上使用 RTC（Real-Time Clock）实时时钟，RTC 可以提供精确的实时时间，它可以用于产生年、月、日、时、分、秒等信息。目前实时时钟芯片大多采用精度较高的晶体振荡器作为时钟源。有些时钟芯片为了在主电源掉电时还可以工作，会外加电池供电，使时间信息一直保持有效。</p>
+<p>RT-Thread 的 RTC 设备为操作系统的时间系统提供了基础服务。面对越来越多的 IoT 场景，RTC 已经成为产品的标配，甚至在诸如 SSL 的安全传输过程中，RTC 已经成为不可或缺的部分。</p>
+</section>
+<section id="id2">
+<h2>硬件说明<a class="headerlink" href="#id2" title="Link to this heading"></a></h2>
+<p>本例程使用的RTC 设备依赖于LOCO 时钟，此外无需过多连接。</p>
+</section>
+<section id="fsp">
+<h2>FSP配置说明<a class="headerlink" href="#fsp" title="Link to this heading"></a></h2>
+<p>打开 FSP，选择对应的工程文件下的 configuration.xml，新增 RTC Stack;</p>
+<p><img alt="image-20250728124756259" src="../../_images/image-20250728124756259.png" /></p>
+<p>下面进行 RTC 参数的配置，设置 rtc stack name 为 g_rtc，设置 RTC 中断回调函数为 rtc_callback，并配置中断回调优先级；</p>
+<p><img alt="image-20250728125146813" src="../../_images/image-20250728125146813.png" /></p>
+</section>
+<section id="rt-thread-settings">
+<h2>RT-Thread Settings配置<a class="headerlink" href="#rt-thread-settings" title="Link to this heading"></a></h2>
+<p>打开 RT-Thread Settings，找到硬件选项，使能 RTC；</p>
+<p><img alt="image-20250728125349827" src="../../_images/image-20250728125349827.png" /></p>
+<p>接下来我们配置 RTC，首先需要使能 RT-Thread 的 RTC 设备框架，同时使能 alarm 功能；</p>
+<p><img alt="image-20250728125432787" src="../../_images/image-20250728125432787.png" /></p>
+</section>
+<section id="id3">
+<h2>示例代码说明<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<p>本例程的源码位于<code class="docutils literal notranslate"><span class="pre">/projects/Titan_driver_rtc</span></code>。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">rtc_sample</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_err_t</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">time_t</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rt_device_t</span><span class="w"> </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">device</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_find</span><span class="p">(</span><span class="n">RTC_NAME</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">device</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;find %s failed!&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_NAME</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rt_device_open</span><span class="p">(</span><span class="n">device</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;open %s failed&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">RTC_NAME</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* 设置日期 */</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set_date</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;set RTC date to %04d-%02d-%02d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;set RTC date failed&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* 设置时间 */</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">set_time</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">LOG_E</span><span class="p">(</span><span class="s">&quot;set RTC time failed&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* 延时3秒 */</span>
+<span class="w">    </span><span class="n">rt_thread_mdelay</span><span class="p">(</span><span class="mi">3000</span><span class="p">);</span>
+
+<span class="w">    </span><span class="cm">/* 获取时间 */</span>
+<span class="w">    </span><span class="n">get_timestamp</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">);</span>
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;now: %.*s&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="n">ctime</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="k">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">rtc_sample_cmd</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;Usage: rtc_sample &lt;year&gt; &lt;month&gt; &lt;day&gt;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]);</span>
+
+<span class="w">    </span><span class="n">rtc_sample</span><span class="p">(</span><span class="n">year</span><span class="p">,</span><span class="w"> </span><span class="n">month</span><span class="p">,</span><span class="w"> </span><span class="n">day</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">MSH_CMD_EXPORT</span><span class="p">(</span><span class="n">rtc_sample_cmd</span><span class="p">,</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">RTC</span><span class="w"> </span><span class="n">date</span><span class="o">:</span><span class="w"> </span><span class="n">rtc_sample_cmd</span><span class="w"> </span><span class="o">&lt;</span><span class="n">year</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">month</span><span class="o">&gt;</span><span class="w"> </span><span class="o">&lt;</span><span class="n">day</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>下面代码可创建一个 RTC 闹钟，然后设置 1 秒后唤醒，最后把该函数导入 msh 命令行中。</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">user_alarm_callback</span><span class="p">(</span><span class="n">rt_alarm_t</span><span class="w"> </span><span class="n">alarm</span><span class="p">,</span><span class="w"> </span><span class="kt">time_t</span><span class="w"> </span><span class="n">timestamp</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">LOG_I</span><span class="p">(</span><span class="s">&quot;user alarm callback function.&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">alarm_sample</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_device_t</span><span class="w"> </span><span class="n">dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_find</span><span class="p">(</span><span class="s">&quot;rtc&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">rt_alarm_setup</span><span class="w"> </span><span class="n">setup</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">rt_alarm</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">alarm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="k">static</span><span class="w"> </span><span class="kt">time_t</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">tm</span><span class="w"> </span><span class="n">p_tm</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">alarm</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">)</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* 获取当前时间戳，并把下一秒时间设置为闹钟时间 */</span>
+<span class="w">    </span><span class="n">now</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_timestamp</span><span class="p">(</span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">gmtime_r</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">,</span><span class="o">&amp;</span><span class="n">p_tm</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">setup</span><span class="p">.</span><span class="n">flag</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_ALARM_SECOND</span><span class="p">;</span>
+<span class="w">    </span><span class="n">setup</span><span class="p">.</span><span class="n">wktime</span><span class="p">.</span><span class="n">tm_year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_tm</span><span class="p">.</span><span class="n">tm_year</span><span class="p">;</span>
+<span class="w">    </span><span class="n">setup</span><span class="p">.</span><span class="n">wktime</span><span class="p">.</span><span class="n">tm_mon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_tm</span><span class="p">.</span><span class="n">tm_mon</span><span class="p">;</span>
+<span class="w">    </span><span class="n">setup</span><span class="p">.</span><span class="n">wktime</span><span class="p">.</span><span class="n">tm_mday</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_tm</span><span class="p">.</span><span class="n">tm_mday</span><span class="p">;</span>
+<span class="w">    </span><span class="n">setup</span><span class="p">.</span><span class="n">wktime</span><span class="p">.</span><span class="n">tm_wday</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_tm</span><span class="p">.</span><span class="n">tm_wday</span><span class="p">;</span>
+<span class="w">    </span><span class="n">setup</span><span class="p">.</span><span class="n">wktime</span><span class="p">.</span><span class="n">tm_hour</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_tm</span><span class="p">.</span><span class="n">tm_hour</span><span class="p">;</span>
+<span class="w">    </span><span class="n">setup</span><span class="p">.</span><span class="n">wktime</span><span class="p">.</span><span class="n">tm_min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_tm</span><span class="p">.</span><span class="n">tm_min</span><span class="p">;</span>
+<span class="w">    </span><span class="n">setup</span><span class="p">.</span><span class="n">wktime</span><span class="p">.</span><span class="n">tm_sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p_tm</span><span class="p">.</span><span class="n">tm_sec</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">alarm</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_alarm_create</span><span class="p">(</span><span class="n">user_alarm_callback</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">setup</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="p">(</span><span class="n">RT_NULL</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">alarm</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_alarm_start</span><span class="p">(</span><span class="n">alarm</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="cm">/* export msh cmd */</span>
+<span class="n">MSH_CMD_EXPORT</span><span class="p">(</span><span class="n">alarm_sample</span><span class="p">,</span><span class="n">alarm</span><span class="w"> </span><span class="n">sample</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h2>编译&amp;下载<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>RT-Thread Studio：在 RT-Thread Studio 的包管理器中下载 Titan Board 资源包，然后创建新工程，执行编译。</p></li>
+</ul>
+<p>编译完成后，将开发板的 Jlink 接口与 PC 机连接，然后将固件下载至开发板。</p>
+</section>
+<section id="id5">
+<h2>运行效果<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
+<p>按下复位按键重启开发板，输入 <code class="docutils literal notranslate"><span class="pre">rtc_sample_cmd</span></code> 命令设置 RTC 时间，输入 <code class="docutils literal notranslate"><span class="pre">alarm_sample</span></code> 命令运行闹钟示例，可以看到板子上会打印如下信息：</p>
+<p><img alt="PixPin_2025-07-28_10-05-09" src="../../_images/PixPin_2025-07-28_10-05-09.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../Titan_driver_usb_pcdc/README.html" class="btn btn-neutral float-left" title="瑞萨 EK-RA8D1 开发板 BSP 说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Titan_driver_gpt/README.html" class="btn btn-neutral float-right" title="RA8P1 Titan Board 开发板 GPT 使用说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

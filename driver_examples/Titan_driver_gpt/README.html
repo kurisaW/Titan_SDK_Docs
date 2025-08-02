@@ -1,0 +1,295 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RA8P1 Titan Board 开发板 GPT 使用说明 &mdash; Titan_SDK_Docs 0.0.1 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5a0213dc"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="瑞萨 EK-RA8D1 开发板 BSP 说明" href="../Titan_driver_hyperram/README.html" />
+    <link rel="prev" title="RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明" href="../Titan_driver_rtc/README.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Titan_SDK_Docs
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <p class="caption" role="heading"><span class="caption-text">目录</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../basic_examples/index.html">基础功能示例</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">驱动示例</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_iic_ist8310/README.html">RA8P1 Titan Board 开发板  IST8310 示例说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_spi_bmi088/README.html">RA8P1 Titan Board BMI088 陀螺仪使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_usb_pcdc/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_rtc/README.html">RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">RA8P1 Titan Board 开发板 GPT 使用说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">简介</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fsp">FSP配置说明</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rt-thread-settings">RT-Thread Settings配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">示例工程说明</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">编译&amp;下载</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">运行效果</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_hyperram/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_usb_hhid/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_rgb_lcd/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_wifi/README.html">瑞萨 EK-RA8D1 开发板 BSP 说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_sdcard/README.html">RA8P1 Titan Board SD卡文件系统使用说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_adc/README.html">RA8P1 Titan Board ADC应用示例说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Titan_driver_wdt/README.html">RA8P1 Titan Board WDT 使用说明</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../component_examples/index.html">组件示例</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Titan_SDK_Docs</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">驱动示例</a></li>
+      <li class="breadcrumb-item active">RA8P1 Titan Board 开发板 GPT 使用说明</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/driver_examples/Titan_driver_gpt/README.md.txt" rel="nofollow"> 查看页面源码</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section class="tex2jax_ignore mathjax_ignore" id="ra8p1-titan-board-gpt">
+<h1>RA8P1 Titan Board 开发板 GPT 使用说明<a class="headerlink" href="#ra8p1-titan-board-gpt" title="Link to this heading"></a></h1>
+<p><strong>中文</strong> | <a class="reference internal" href="README_EN.html"><span class="std std-doc"><strong>English</strong></span></a></p>
+<section id="id1">
+<h2>简介<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
+<p>在我们具体的应用场合中往往都离不开 timer 的使用，本例程主要介绍了如何在 Titan Board 上使用 GPT 设备，包括基本定时器的使用和 PWM 的使用。</p>
+</section>
+<section id="fsp">
+<h2>FSP配置说明<a class="headerlink" href="#fsp" title="Link to this heading"></a></h2>
+<p>FSP 分别配置使能 GPT1 为基本定时器模式，GPT12 为 PWM 模式：</p>
+<p><img alt="image-20250730143410015" src="../../_images/image-20250730143410015.png" /></p>
+<p><img alt="image-20250730143446125" src="../../_images/image-20250730143446125.png" /></p>
+<p>并配置 Pins 使能 GPT12：</p>
+<p><img alt="image-20250730143622345" src="../../_images/image-20250730143622345.png" /></p>
+<section id="rt-thread-settings">
+<h3>RT-Thread Settings配置<a class="headerlink" href="#rt-thread-settings" title="Link to this heading"></a></h3>
+<p>在配置中打开 timer1 使能与 PWM12 使能：</p>
+<p><img alt="image-20250730143710093" src="../../_images/image-20250730143710093.png" /></p>
+<p><img alt="image-20250730143737261" src="../../_images/image-20250730143737261.png" /></p>
+</section>
+<section id="id2">
+<h3>示例工程说明<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>本例程的源码位于<code class="docutils literal notranslate"><span class="pre">/projects/Titan_driver_gpt</span></code>：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* This is a hwtimer example */</span>
+<span class="cp">#define HWTIMER_DEV_NAME &quot;timer1&quot; </span><span class="cm">/* device name */</span>
+<span class="k">static</span><span class="w"> </span><span class="n">rt_err_t</span><span class="w"> </span><span class="nf">timeout_cb</span><span class="p">(</span><span class="n">rt_device_t</span><span class="w"> </span><span class="n">dev</span><span class="p">,</span><span class="w"> </span><span class="n">rt_size_t</span><span class="w"> </span><span class="n">size</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;this is hwtimer timeout callback fucntion!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;tick is :%d !</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rt_tick_get</span><span class="p">());</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">hwtimer_sample</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">rt_err_t</span><span class="w"> </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rt_hwtimerval_t</span><span class="w"> </span><span class="n">timeout_s</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rt_device_t</span><span class="w"> </span><span class="n">hw_dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rt_hwtimer_mode_t</span><span class="w"> </span><span class="n">mode</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">rt_uint32_t</span><span class="w"> </span><span class="n">freq</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R_FSP_SystemClockHzGet</span><span class="p">(</span><span class="n">FSP_PRIV_CLOCK_PCLKD</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">g_timer1_cfg</span><span class="p">.</span><span class="n">source_div</span><span class="p">;</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;GPT Timer clock freq is: %d hz</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">freq</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">hw_dev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_find</span><span class="p">(</span><span class="n">HWTIMER_DEV_NAME</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">hw_dev</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">RT_NULL</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;hwtimer sample run failed! can&#39;t find %s device!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">HWTIMER_DEV_NAME</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">RT_ERROR</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_open</span><span class="p">(</span><span class="n">hw_dev</span><span class="p">,</span><span class="w"> </span><span class="n">RT_DEVICE_OFLAG_RDWR</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;open %s device failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">HWTIMER_DEV_NAME</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">rt_device_set_rx_indicate</span><span class="p">(</span><span class="n">hw_dev</span><span class="p">,</span><span class="w"> </span><span class="n">timeout_cb</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">rt_device_control</span><span class="p">(</span><span class="n">hw_dev</span><span class="p">,</span><span class="w"> </span><span class="n">HWTIMER_CTRL_FREQ_SET</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">freq</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">mode</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">HWTIMER_MODE_PERIOD</span><span class="p">;</span>
+<span class="w">    </span><span class="n">ret</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rt_device_control</span><span class="p">(</span><span class="n">hw_dev</span><span class="p">,</span><span class="w"> </span><span class="n">HWTIMER_CTRL_MODE_SET</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mode</span><span class="p">);</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">ret</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">RT_EOK</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;set mode failed! ret is :%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ret</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Example Set the timeout period of the timer */</span>
+<span class="w">    </span><span class="n">timeout_s</span><span class="p">.</span><span class="n">sec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w">  </span><span class="cm">/* secend */</span>
+<span class="w">    </span><span class="n">timeout_s</span><span class="p">.</span><span class="n">usec</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="cm">/* microsecend */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rt_device_write</span><span class="p">(</span><span class="n">hw_dev</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">timeout_s</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">timeout_s</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">timeout_s</span><span class="p">))</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;set timeout value failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="o">-</span><span class="n">RT_ERROR</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* read hwtimer value */</span>
+<span class="w">    </span><span class="n">rt_device_read</span><span class="p">(</span><span class="n">hw_dev</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">timeout_s</span><span class="p">,</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="n">timeout_s</span><span class="p">));</span>
+<span class="w">    </span><span class="n">rt_kprintf</span><span class="p">(</span><span class="s">&quot;Read: Sec = %d, Usec = %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">timeout_s</span><span class="p">.</span><span class="n">sec</span><span class="p">,</span><span class="w"> </span><span class="n">timeout_s</span><span class="p">.</span><span class="n">usec</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">ret</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">MSH_CMD_EXPORT</span><span class="p">(</span><span class="n">hwtimer_sample</span><span class="p">,</span><span class="w"> </span><span class="n">hwtimer</span><span class="w"> </span><span class="n">sample</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>每隔 1s 触发一次中断回调函数打印输出，下面是 PWM 配置使能：</p>
+<p>PWM 相关宏定义：</p>
+<p>当前版本的 PWM 驱动将每个通道都看做一个单独的 PWM 设备，每个设备都只有一个通道 0。使用 PWM12 设备，注意此处通道选择为 0 通道；</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PWM_DEV_NAME        &quot;pwm12&quot; </span><span class="cm">/* PWM设备名称 */</span>
+<span class="cp">#define PWM_DEV_CHANNEL      0      </span><span class="cm">/* PWM通道 */</span>
+<span class="k">struct</span><span class="w"> </span><span class="nc">rt_device_pwm</span><span class="w"> </span><span class="o">*</span><span class="n">pwm_dev</span><span class="p">;</span><span class="w">      </span><span class="cm">/* PWM设备句柄 */</span>
+</pre></div>
+</div>
+<p>配置 PWM 周期以及占空比：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">static</span> <span class="nb">int</span> <span class="n">pwm_sample</span><span class="p">(</span><span class="nb">int</span> <span class="n">argc</span><span class="p">,</span> <span class="n">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>
+<span class="p">{</span>
+    <span class="n">rt_uint32_t</span> <span class="n">period</span><span class="p">,</span> <span class="n">pulse</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">argc</span> <span class="o">!=</span> <span class="mi">3</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOG_I</span><span class="p">(</span><span class="s2">&quot;Usage: pwm_sample &lt;period&gt; &lt;pulse&gt;&quot;</span><span class="p">);</span>
+        <span class="n">LOG_I</span><span class="p">(</span><span class="s2">&quot;Example: pwm_sample 500000 250000&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">RT_ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">period</span> <span class="o">=</span> <span class="p">(</span><span class="n">rt_uint32_t</span><span class="p">)</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+    <span class="n">pulse</span>  <span class="o">=</span> <span class="p">(</span><span class="n">rt_uint32_t</span><span class="p">)</span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">period</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">pulse</span> <span class="o">&gt;</span> <span class="n">period</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOG_E</span><span class="p">(</span><span class="s2">&quot;Error: Invalid parameters. Ensure period &gt; 0 and pulse &lt;= period.&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">RT_ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">pwm_dev</span> <span class="o">=</span> <span class="p">(</span><span class="n">struct</span> <span class="n">rt_device_pwm</span> <span class="o">*</span><span class="p">)</span><span class="n">rt_device_find</span><span class="p">(</span><span class="n">PWM_DEV_NAME</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">pwm_dev</span> <span class="o">==</span> <span class="n">RT_NULL</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOG_E</span><span class="p">(</span><span class="s2">&quot;Error: Cannot find PWM device named &#39;</span><span class="si">%s</span><span class="s2">&#39;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">PWM_DEV_NAME</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">RT_ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">rt_pwm_set</span><span class="p">(</span><span class="n">pwm_dev</span><span class="p">,</span> <span class="n">PWM_DEV_CHANNEL</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">pulse</span><span class="p">)</span> <span class="o">!=</span> <span class="n">RT_EOK</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOG_E</span><span class="p">(</span><span class="s2">&quot;Error: Failed to set PWM configuration.&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">RT_ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">rt_pwm_enable</span><span class="p">(</span><span class="n">pwm_dev</span><span class="p">,</span> <span class="n">PWM_DEV_CHANNEL</span><span class="p">)</span> <span class="o">!=</span> <span class="n">RT_EOK</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">LOG_E</span><span class="p">(</span><span class="s2">&quot;Error: Failed to enable PWM output.&quot;</span><span class="p">);</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">RT_ERROR</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="n">LOG_I</span><span class="p">(</span><span class="s2">&quot;PWM started on device: </span><span class="si">%s</span><span class="s2">, channel: </span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">PWM_DEV_NAME</span><span class="p">,</span> <span class="n">PWM_DEV_CHANNEL</span><span class="p">);</span>
+    <span class="n">LOG_I</span><span class="p">(</span><span class="s2">&quot;Period: </span><span class="si">%u</span><span class="s2"> ns, Pulse: </span><span class="si">%u</span><span class="s2"> ns&quot;</span><span class="p">,</span> <span class="n">period</span><span class="p">,</span> <span class="n">pulse</span><span class="p">);</span>
+    <span class="n">LOG_I</span><span class="p">(</span><span class="s2">&quot;Please connect the </span><span class="se">\&#39;</span><span class="s2">P714</span><span class="se">\&#39;</span><span class="s2"> to a logic analyzer or oscilloscope for waveform observation.&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">RT_EOK</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">MSH_CMD_EXPORT</span><span class="p">(</span><span class="n">pwm_sample</span><span class="p">,</span> <span class="n">Configure</span> <span class="ow">and</span> <span class="n">start</span> <span class="n">PWM</span> <span class="n">output</span><span class="p">:</span> <span class="n">pwm_sample</span> <span class="o">&lt;</span><span class="n">period</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">pulse</span><span class="o">&gt;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="id3">
+<h2>编译&amp;下载<a class="headerlink" href="#id3" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>RT-Thread Studio：在 RT-Thread Studio 的包管理器中下载 Titan Board 资源包，然后创建新工程，执行编译。</p></li>
+</ul>
+<p>编译完成后，将开发板的 Jlink 接口与 PC 机连接，然后将固件下载至开发板。</p>
+</section>
+<section id="id4">
+<h2>运行效果<a class="headerlink" href="#id4" title="Link to this heading"></a></h2>
+<p>在串口终端分别输入pwm_sample、hwtimer_sample查看具体效果；</p>
+<p>每隔 1s 触发回调函数并打印输出：</p>
+<p><img alt="PixPin_2025-07-25_15-19-27" src="../../_images/PixPin_2025-07-25_15-19-27.png" /></p>
+<p>使用逻辑分析仪量取 PWM 输出波形如下所示：</p>
+<p><img alt="PixPin_2025-07-25_15-22-07" src="../../_images/PixPin_2025-07-25_15-22-07.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="../Titan_driver_rtc/README.html" class="btn btn-neutral float-left" title="RA8P1 Titan Board 开发板 RTC 及 alarm 使用例程说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="../Titan_driver_hyperram/README.html" class="btn btn-neutral float-right" title="瑞萨 EK-RA8D1 开发板 BSP 说明" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2025, apache。</p>
+  </div>
+
+  利用 <a href="https://www.sphinx-doc.org/">Sphinx</a> 构建，使用的 
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">主题</a>
+    由 <a href="https://readthedocs.org">Read the Docs</a> 开发.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
